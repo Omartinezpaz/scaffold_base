@@ -5,20 +5,21 @@ const dns = require('dns').promises;
 const os = require('os');
 const net = require('net');
 
-// Health Check Endpoint (For Dokploy Health Checks)
+// Health Check Endpoint (For Dokploy Health Checks & Admin Dashboard)
 router.get('/health', (req, res) => {
   const dbStatus = db.getDbStatus();
   res.json({
     status: 'healthy',
+    brand: 'Hamburger Rapid Commercial v1.0',
     timestamp: new Date().toISOString(),
     uptime: process.uptime(),
     version: '1.0.0',
-    platform: 'Dokploy CI/CD Live Demo',
+    platform: 'Hamburger Rapid Enterprise Cloud',
     database: dbStatus
   });
 });
 
-// List products
+// List products (10 featured burgers + any newly added)
 router.get('/products', async (req, res) => {
   try {
     const products = await db.getProducts();
@@ -35,12 +36,12 @@ router.get('/products', async (req, res) => {
 // Add new product
 router.post('/products', async (req, res) => {
   try {
-    const { name, category, price, stock, image, description } = req.body;
+    const { name, category, price, stock, image, description, badge, specialtyLevel } = req.body;
     if (!name || price === undefined) {
       return res.status(400).json({ success: false, error: 'Nombre y precio son requeridos.' });
     }
-    const product = await db.addProduct({ name, category, price, stock, image, description });
-    res.status(201).json({ success: true, message: 'Producto creado exitosamente', data: product });
+    const product = await db.addProduct({ name, category, price, stock, image, description, badge, specialtyLevel });
+    res.status(201).json({ success: true, message: 'Hamburguesa agregada exitosamente', data: product });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
@@ -51,17 +52,60 @@ router.delete('/products/:id', async (req, res) => {
   try {
     const { id } = req.params;
     await db.deleteProduct(id);
-    res.json({ success: true, message: `Producto ${id} eliminado.` });
+    res.json({ success: true, message: `Hamburguesa ${id} eliminada.` });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
 });
 
-// Reset initial products
+// List customers & consumption metrics
+router.get('/customers', (req, res) => {
+  try {
+    const customers = db.getCustomers();
+    res.json({
+      success: true,
+      count: customers.length,
+      data: customers
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// List orders
+router.get('/orders', (req, res) => {
+  try {
+    const orders = db.getOrders();
+    res.json({
+      success: true,
+      count: orders.length,
+      data: orders
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Create simulated order from PWA or E-commerce
+router.post('/orders', (req, res) => {
+  try {
+    const { customerName, items, total } = req.body;
+    const order = db.createOrder({ customerName, items, total });
+    res.status(201).json({
+      success: true,
+      message: 'Orden procesada exitosamente en Hamburger Rapid',
+      data: order
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Reset initial catalog
 router.post('/reset', async (req, res) => {
   try {
     await db.resetProducts();
-    res.json({ success: true, message: 'Datos demo restablecidos.' });
+    res.json({ success: true, message: 'Catálogo Hamburger Rapid restablecido.' });
   } catch (error) {
     res.status(500).json({ success: false, error: error.message });
   }
