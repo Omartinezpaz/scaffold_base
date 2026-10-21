@@ -362,13 +362,14 @@ export default function App() {
           position: 'sticky',
           top: 0,
           zIndex: 40,
-          background: 'rgba(250, 247, 242, 0.94)',
+          background: 'var(--surface)',
           backdropFilter: 'blur(12px)',
           borderBottom: '1px solid var(--border)',
           padding: '14px 18px',
           display: 'flex',
           justifyContent: 'space-between',
-          alignItems: 'center'
+          alignItems: 'center',
+          boxShadow: 'var(--shadow-sm)'
         }}
       >
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -377,12 +378,12 @@ export default function App() {
               width: '38px',
               height: '38px',
               borderRadius: '11px',
-              background: 'linear-gradient(135deg, #D9381E, #EA580C)',
+              background: 'linear-gradient(135deg, var(--primary) 0%, #EA580C 100%)',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               fontSize: '1.2rem',
-              boxShadow: '0 4px 12px rgba(217, 56, 30, 0.25)'
+              boxShadow: '0 4px 12px rgba(232, 119, 34, 0.3)'
             }}
           >
             🍔
@@ -423,14 +424,15 @@ export default function App() {
             left: '50%',
             transform: 'translateX(-50%)',
             zIndex: 90,
-            background: '#1C1917',
-            color: '#FAF7F2',
+            background: 'var(--secondary)',
+            color: '#FFFFFF',
             padding: '10px 18px',
             borderRadius: '999px',
             fontSize: '0.8rem',
             fontWeight: 700,
-            boxShadow: '0 10px 25px rgba(0,0,0,0.2)',
-            whiteSpace: 'nowrap'
+            boxShadow: '0 10px 25px rgba(0,0,0,0.25)',
+            whiteSpace: 'nowrap',
+            border: '1px solid rgba(255, 255, 255, 0.12)'
           }}
         >
           {toast}
@@ -438,7 +440,7 @@ export default function App() {
       )}
 
       {/* Main Content Area by Active Tab */}
-      <main style={{ flex: 1, padding: '16px 18px' }} className="fade-in" key={activeTab}>
+      <main style={{ flex: 1, padding: '16px 18px calc(86px + env(safe-area-inset-bottom, 0px))' }} className="fade-in" key={activeTab}>
         {/* ================= TAB 1: MENÚ ================= */}
         {activeTab === 'menu' && (
           <div>
@@ -496,21 +498,23 @@ export default function App() {
             </div>
 
             {/* Category Pills */}
-            <div style={{ display: 'flex', gap: '8px', marginBottom: '16px', overflowX: 'auto', paddingBottom: '4px' }}>
+            <div className="horizontal-scroll" style={{ gap: '8px', marginBottom: '16px' }}>
               {['Todas', 'Especiales', 'Clásicas'].map(cat => (
                 <button
                   key={cat}
                   onClick={() => setCategoryFilter(cat)}
                   style={{
-                    padding: '7px 15px',
+                    padding: '8px 18px',
                     borderRadius: '999px',
-                    border: categoryFilter === cat ? '1px solid var(--brand)' : '1px solid var(--border)',
-                    background: categoryFilter === cat ? 'var(--brand)' : 'var(--surface)',
+                    border: categoryFilter === cat ? '2px solid var(--secondary)' : '1px solid var(--border)',
+                    background: categoryFilter === cat ? 'var(--secondary)' : 'var(--surface)',
                     color: categoryFilter === cat ? '#FFFFFF' : 'var(--text-secondary)',
                     fontWeight: 700,
-                    fontSize: '0.8rem',
+                    fontSize: '0.82rem',
                     cursor: 'pointer',
-                    whiteSpace: 'nowrap'
+                    whiteSpace: 'nowrap',
+                    boxShadow: categoryFilter === cat ? 'var(--shadow-sm)' : 'none',
+                    transition: 'all 0.2s ease'
                   }}
                 >
                   {cat === 'Todas' ? `Todas (${burgers.length})` : cat}
@@ -519,7 +523,7 @@ export default function App() {
             </div>
 
             {/* Burger List */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
               {filteredBurgers.map(burger => {
                 const qty = getCartQty(burger.id);
                 return (
@@ -527,24 +531,25 @@ export default function App() {
                     key={burger.id}
                     style={{
                       background: 'var(--surface)',
-                      border: qty > 0 ? '1.5px solid var(--brand)' : '1px solid var(--border)',
-                      borderRadius: '18px',
+                      border: qty > 0 ? '1.5px solid var(--primary)' : '1px solid var(--border)',
+                      borderRadius: '20px',
                       padding: '12px',
                       display: 'flex',
                       gap: '12px',
-                      boxShadow: 'var(--shadow-sm)'
+                      boxShadow: qty > 0 ? 'var(--shadow-md)' : 'var(--shadow-sm)',
+                      transition: 'all 0.25s ease'
                     }}
                   >
                     <img
                       src={burger.image}
                       alt={burger.name}
                       style={{
-                        width: '92px',
-                        height: '92px',
-                        borderRadius: '14px',
+                        width: '96px',
+                        height: '96px',
+                        borderRadius: '16px',
                         objectFit: 'cover',
                         flexShrink: 0,
-                        background: '#F3EDE3'
+                        background: 'var(--bg-app)'
                       }}
                     />
                     <div style={{ flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -554,7 +559,7 @@ export default function App() {
                             display: 'inline-block',
                             fontSize: '0.66rem',
                             fontWeight: 800,
-                            padding: '2px 7px',
+                            padding: '2px 8px',
                             borderRadius: '6px',
                             background: burger.category === 'Especiales' ? 'var(--amber-soft)' : 'var(--success-soft)',
                             color: burger.category === 'Especiales' ? '#92400E' : '#166534',
@@ -564,19 +569,19 @@ export default function App() {
                           {burger.badge || `⭐ Nivel ${burger.category}`}
                         </span>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '6px' }}>
-                          <h3 className="serif-title" style={{ fontSize: '0.98rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>
+                          <h3 className="serif-title" style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>
                             {burger.name}
                           </h3>
-                          <span className="serif-title" style={{ fontSize: '1.02rem', fontWeight: 800, color: 'var(--brand)' }}>
+                          <span className="serif-title" style={{ fontSize: '1.08rem', fontWeight: 800, color: 'var(--primary)' }}>
                             ${Number(burger.price).toFixed(2)}
                           </span>
                         </div>
-                        <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '3px', lineHeight: 1.35 }}>
+                        <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', marginTop: '3px', lineHeight: 1.4 }}>
                           {burger.description}
                         </p>
                       </div>
 
-                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px' }}>
+                      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '10px' }}>
                         <span style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                           ⏱️ {burger.prepTime || '7-9 min'} • 🔥 {burger.calories || '720 kcal'}
                         </span>
@@ -585,14 +590,16 @@ export default function App() {
                           <button
                             onClick={() => updateCartItem(burger, 1)}
                             style={{
-                              background: 'var(--brand)',
+                              background: 'linear-gradient(135deg, var(--primary) 0%, #EA580C 100%)',
                               color: '#FFFFFF',
                               border: 'none',
-                              borderRadius: '10px',
-                              padding: '6px 13px',
-                              fontSize: '0.78rem',
+                              borderRadius: '12px',
+                              padding: '7px 15px',
+                              fontSize: '0.8rem',
                               fontWeight: 700,
-                              cursor: 'pointer'
+                              cursor: 'pointer',
+                              boxShadow: '0 4px 12px rgba(232, 119, 34, 0.35)',
+                              transition: 'all 0.2s ease'
                             }}
                           >
                             + Agregar
@@ -605,8 +612,8 @@ export default function App() {
                               gap: '10px',
                               background: 'var(--brand-soft)',
                               border: '1px solid #FECACA',
-                              borderRadius: '10px',
-                              padding: '3px 8px'
+                              borderRadius: '12px',
+                              padding: '4px 10px'
                             }}
                           >
                             <button
@@ -614,7 +621,7 @@ export default function App() {
                               style={{
                                 border: 'none',
                                 background: 'transparent',
-                                color: 'var(--brand)',
+                                color: 'var(--primary)',
                                 fontWeight: 800,
                                 fontSize: '1rem',
                                 cursor: 'pointer'
@@ -622,13 +629,13 @@ export default function App() {
                             >
                               −
                             </button>
-                            <span style={{ fontSize: '0.82rem', fontWeight: 800, color: 'var(--brand)' }}>{qty}</span>
+                            <span style={{ fontSize: '0.84rem', fontWeight: 800, color: 'var(--primary)' }}>{qty}</span>
                             <button
                               onClick={() => updateCartItem(burger, 1)}
                               style={{
                                 border: 'none',
                                 background: 'transparent',
-                                color: 'var(--brand)',
+                                color: 'var(--primary)',
                                 fontWeight: 800,
                                 fontSize: '1rem',
                                 cursor: 'pointer'
@@ -652,22 +659,23 @@ export default function App() {
                 style={{
                   position: 'sticky',
                   bottom: '12px',
-                  marginTop: '18px',
-                  background: '#1C1917',
+                  marginTop: '20px',
+                  background: 'var(--secondary)',
                   color: '#FFFFFF',
-                  padding: '13px 18px',
-                  borderRadius: '16px',
+                  padding: '14px 20px',
+                  borderRadius: '18px',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 14px 28px rgba(28, 25, 23, 0.25)'
+                  boxShadow: '0 12px 28px rgba(43, 45, 66, 0.35)',
+                  border: '1px solid rgba(255, 255, 255, 0.12)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span
                     style={{
-                      background: 'var(--brand)',
+                      background: 'var(--primary)',
                       padding: '4px 10px',
                       borderRadius: '999px',
                       fontSize: '0.78rem',
@@ -678,7 +686,7 @@ export default function App() {
                   </span>
                   <span style={{ fontSize: '0.86rem', fontWeight: 700 }}>Ir a Simular Compra</span>
                 </div>
-                <span className="serif-title" style={{ fontSize: '1.05rem', fontWeight: 800, color: '#FBBF24' }}>
+                <span className="serif-title" style={{ fontSize: '1.08rem', fontWeight: 800, color: 'var(--accent)' }}>
                   ${finalTotal.toFixed(2)} ➔
                 </span>
               </div>
@@ -1338,13 +1346,14 @@ export default function App() {
           bottom: 0,
           width: '100%',
           maxWidth: '480px',
-          background: 'rgba(255, 255, 255, 0.96)',
+          background: 'var(--surface)',
           backdropFilter: 'blur(16px)',
           borderTop: '1px solid var(--border)',
           display: 'grid',
           gridTemplateColumns: 'repeat(4, 1fr)',
-          padding: '8px 6px 12px',
-          zIndex: 50
+          padding: '8px 6px calc(10px + env(safe-area-inset-bottom, 0px))',
+          zIndex: 50,
+          boxShadow: '0 -4px 16px rgba(0, 0, 0, 0.04)'
         }}
       >
         {[

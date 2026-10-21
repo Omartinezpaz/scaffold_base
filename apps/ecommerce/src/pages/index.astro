@@ -182,32 +182,69 @@ const burgers = [
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
+  <meta name="description" content="Hamburger Rapid — Fast Food Gourmet de autor con 10 hamburguesas exclusivas, carne 100% Angus certificada y pan brioche horneado a diario." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {
+      /* Paleta de colores refinada del Sistema de Diseño */
+      --primary: #E87722;
+      --primary-dark: #C96418;
+      --primary-light: #F4A261;
+      --secondary: #2B2D42;
+      --secondary-dark: #1E202F;
+      --accent: #FFD166;
+      --success: #06D6A0;
+      --danger: #EF476F;
+
+      /* Fondos y superficies */
       --bg-primary: #FAF7F2;
       --bg-secondary: #F3EDE3;
       --surface: #FFFFFF;
-      --surface-elevated: #FFFDF9;
-      --border: #E6DEC8;
-      --border-subtle: #EFE9DC;
-      --text-main: #1C1917;
-      --text-secondary: #57534E;
-      --text-muted: #78716C;
-      --brand: #D9381E;
-      --brand-hover: #B82B14;
-      --brand-soft: #FEECE8;
-      --amber: #D97706;
-      --amber-soft: #FEF3C7;
-      --emerald: #15803D;
-      --emerald-soft: #DCFCE7;
-      --purple-royal: #6D28D9;
-      --purple-soft: #EDE9FE;
-      --shadow-sm: 0 4px 14px rgba(28, 25, 23, 0.05);
-      --shadow-md: 0 12px 32px rgba(28, 25, 23, 0.08);
-      --shadow-lg: 0 24px 48px rgba(28, 25, 23, 0.12);
+      --surface-warm: #FFFDF9;
+      --border: #E2E8F0;
+      --border-subtle: #F1F5F9;
+
+      /* Colores de texto */
+      --text-main: #1E293B;
+      --text-secondary: #64748B;
+      --text-muted: #94A3B8;
+
+      /* Escala tipográfica mejorada */
+      --text-xs: 0.75rem;
+      --text-sm: 0.875rem;
+      --text-base: 1rem;
+      --text-lg: 1.125rem;
+      --text-xl: 1.25rem;
+      --text-2xl: 1.5rem;
+      --text-3xl: 1.875rem;
+      --text-4xl: 2.25rem;
+      --text-5xl: 3rem;
+
+      /* Espaciado consistente */
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --space-12: 3rem;
+      --space-16: 4rem;
+
+      /* Sombras mejoradas */
+      --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+      /* Bordes */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+      --radius-2xl: 1.5rem;
+      --radius-full: 9999px;
     }
 
     * {
@@ -226,24 +263,40 @@ const burgers = [
       color: var(--text-main);
       line-height: 1.6;
       overflow-x: hidden;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 3px;
+    }
+
+    button:active, .btn-primary:active, .btn-secondary:active, .btn-dark:active, .strip-pill:active, .filter-btn:active {
+      transform: scale(0.97) !important;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-6);
     }
 
     /* Top Announcement Bar */
     .top-bar {
-      background: linear-gradient(90deg, #1C1917 0%, #292524 50%, #1C1917 100%);
+      background: linear-gradient(90deg, #1E202F 0%, var(--secondary) 50%, #1E202F 100%);
       color: #FAF7F2;
-      font-size: 0.82rem;
+      font-size: var(--text-xs);
       font-weight: 600;
-      padding: 0.55rem 1.5rem;
+      padding: var(--space-2) var(--space-4);
       text-align: center;
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 1.5rem;
+      gap: var(--space-4);
       flex-wrap: wrap;
     }
-    .top-bar span.highlight {
-      color: #FBBF24;
+    .top-bar .highlight {
+      color: var(--accent);
       font-weight: 700;
     }
 
@@ -252,37 +305,35 @@ const burgers = [
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(250, 247, 242, 0.92);
+      background: rgba(250, 247, 242, 0.94);
       backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
-      padding: 1rem 2rem;
+      padding: var(--space-4) 0;
     }
     .nav-container {
-      max-width: 1280px;
-      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: var(--space-4);
       flex-wrap: wrap;
     }
     .brand-logo {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: var(--space-3);
       text-decoration: none;
-      color: var(--text-main);
+      color: var(--secondary);
     }
     .brand-icon {
       width: 44px;
       height: 44px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, var(--brand) 0%, #EA580C 100%);
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--primary) 0%, #EA580C 100%);
       display: flex;
       align-items: center;
       justify-content: center;
       font-size: 1.45rem;
-      box-shadow: 0 6px 16px rgba(217, 56, 30, 0.25);
+      box-shadow: 0 4px 12px rgba(232, 119, 34, 0.3);
     }
     .brand-text {
       display: flex;
@@ -290,565 +341,760 @@ const burgers = [
     }
     .brand-title {
       font-family: 'Fraunces', serif;
-      font-size: 1.35rem;
+      font-size: var(--text-xl);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.1;
-      color: var(--text-main);
+      color: var(--secondary);
     }
     .brand-sub {
-      font-size: 0.7rem;
+      font-size: var(--text-xs);
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--brand);
+      color: var(--primary);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: var(--space-6);
     }
     .nav-links a {
       text-decoration: none;
       color: var(--text-secondary);
       font-weight: 600;
-      font-size: 0.92rem;
-      transition: color 0.2s;
+      font-size: var(--text-sm);
+      transition: color 0.25s ease;
+      position: relative;
     }
     .nav-links a:hover {
-      color: var(--brand);
+      color: var(--primary);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: var(--space-3);
     }
-    .btn {
+
+    /* Common Buttons */
+    .btn-primary {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.25rem;
-      border-radius: 999px;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: linear-gradient(135deg, var(--primary) 0%, #EA580C 100%);
+      color: white;
       font-weight: 700;
-      font-size: 0.88rem;
-      text-decoration: none;
+      font-size: var(--text-base);
+      border-radius: var(--radius-lg);
+      border: none;
       cursor: pointer;
-      transition: all 0.22s ease;
-      border: 1px solid transparent;
-    }
-    .btn-outline {
-      background: var(--surface);
-      color: var(--text-main);
-      border-color: var(--border);
-      box-shadow: var(--shadow-sm);
-    }
-    .btn-outline:hover {
-      border-color: var(--brand);
-      color: var(--brand);
-      transform: translateY(-1px);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--brand) 0%, #EA580C 100%);
-      color: #FFFFFF;
-      box-shadow: 0 8px 20px rgba(217, 56, 30, 0.28);
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 8px 20px -4px rgba(232, 119, 34, 0.4);
     }
     .btn-primary:hover {
-      background: linear-gradient(135deg, var(--brand-hover) 0%, #C2410C 100%);
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #C96418 100%);
       transform: translateY(-2px);
-      box-shadow: 0 12px 24px rgba(217, 56, 30, 0.35);
+      box-shadow: 0 14px 24px -4px rgba(232, 119, 34, 0.5);
     }
 
-    /* Hero Section */
-    .hero {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 3.5rem 2rem 3rem;
-      display: grid;
-      grid-template-columns: 1.15fr 0.85fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .hero-pill {
+    .btn-secondary {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--amber-soft);
-      color: #92400E;
-      border: 1px solid #FDE68A;
-      padding: 0.4rem 1rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: white;
+      color: var(--secondary);
+      border: 2px solid var(--border);
+      border-radius: var(--radius-lg);
       font-weight: 700;
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 {
-      font-family: 'Fraunces', serif;
-      font-size: clamp(2.5rem, 4.5vw, 3.85rem);
-      font-weight: 800;
-      line-height: 1.08;
-      letter-spacing: -0.02em;
-      color: var(--text-main);
-      margin-bottom: 1.25rem;
-    }
-    .hero h1 span.accent {
-      color: var(--brand);
-      text-decoration: underline;
-      text-decoration-color: rgba(217, 56, 30, 0.25);
-      text-underline-offset: 6px;
-    }
-    .hero p.lead {
-      font-size: 1.12rem;
-      color: var(--text-secondary);
-      max-width: 580px;
-      margin-bottom: 2rem;
-    }
-    .hero-cta-group {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      margin-bottom: 2.5rem;
-    }
-    .hero-cta-group .btn {
-      padding: 0.9rem 1.75rem;
-      font-size: 0.96rem;
-    }
-    .hero-stats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      padding: 1.15rem 1.5rem;
-      border-radius: 18px;
+      font-size: var(--text-base);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
       box-shadow: var(--shadow-sm);
     }
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-    }
-    .stat-value {
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--text-main);
-    }
-    .stat-label {
-      font-size: 0.76rem;
-      color: var(--text-muted);
-      font-weight: 600;
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
     }
 
-    /* Hero Featured Showcase Card */
-    .hero-showcase {
-      position: relative;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 1.25rem;
-      box-shadow: var(--shadow-lg);
+    .btn-dark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-2);
+      padding: var(--space-3) var(--space-6);
+      background: var(--secondary);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
     }
-    .showcase-tag {
-      position: absolute;
-      top: 2rem;
-      left: 2rem;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      padding: 0.45rem 0.95rem;
-      border-radius: 999px;
-      font-size: 0.78rem;
-      font-weight: 800;
-      color: var(--brand);
-      border: 1px solid var(--border);
+    .btn-dark:hover {
+      background: #1a1c2e;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    /* 2. Hero Section Mejorado (Soluciona problema de superposición y jerarquía) */
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-12);
+      align-items: center;
+      padding: var(--space-12) 0;
+      min-height: 75vh;
+    }
+
+    .hero-content {
+      max-width: 620px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      padding: var(--space-2) var(--space-4);
+      background: linear-gradient(135deg, rgba(255, 209, 102, 0.28) 0%, rgba(244, 162, 97, 0.22) 100%);
+      border: 1px solid rgba(232, 119, 34, 0.3);
+      border-radius: var(--radius-xl);
+      font-size: var(--text-sm);
+      font-weight: 700;
+      color: var(--secondary);
+      margin-bottom: var(--space-6);
       box-shadow: var(--shadow-sm);
-      z-index: 2;
     }
-    .showcase-img {
-      width: 100%;
-      height: 330px;
-      object-fit: cover;
-      border-radius: 20px;
-      display: block;
-    }
-    .showcase-body {
-      padding: 1.25rem 0.5rem 0.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1rem;
-    }
-    .showcase-title {
+
+    .hero-title {
       font-family: 'Fraunces', serif;
-      font-size: 1.45rem;
+      font-size: clamp(2.4rem, 4.5vw, var(--text-5xl));
       font-weight: 800;
-      color: var(--text-main);
-      margin: 0.25rem 0;
+      line-height: 1.12;
+      color: var(--secondary);
+      margin-bottom: var(--space-6);
+      letter-spacing: -0.02em;
     }
-    .showcase-price {
-      font-family: 'Fraunces', serif;
-      font-size: 1.75rem;
-      font-weight: 800;
-      color: var(--brand);
+
+    .hero-title .highlight {
+      color: var(--primary);
+      position: relative;
+      display: inline-block;
       white-space: nowrap;
     }
 
-    /* Featured Highlight Strip for the 4 Signature Named Burgers */
+    .hero-title .highlight::after {
+      content: '';
+      position: absolute;
+      bottom: 6px;
+      left: 0;
+      width: 100%;
+      height: 10px;
+      background: var(--accent);
+      opacity: 0.4;
+      z-index: -1;
+      border-radius: var(--radius-sm);
+    }
+
+    .hero-description {
+      font-size: var(--text-lg);
+      line-height: 1.65;
+      color: var(--text-secondary);
+      margin-bottom: var(--space-8);
+    }
+
+    .hero-cta-group {
+      display: flex;
+      gap: var(--space-4);
+      flex-wrap: wrap;
+      margin-bottom: var(--space-10);
+    }
+
+    .hero-stats {
+      display: flex;
+      gap: var(--space-10);
+      margin-top: var(--space-8);
+      padding-top: var(--space-6);
+      border-top: 1px solid #E2E8F0;
+    }
+
+    .stat-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .stat-value {
+      font-family: 'Fraunces', serif;
+      font-size: var(--text-3xl);
+      font-weight: 800;
+      color: var(--secondary);
+    }
+
+    .stat-label {
+      font-size: var(--text-sm);
+      color: var(--text-secondary);
+      font-weight: 600;
+    }
+
+    /* Hero Visual Container con ángulo y badge flotante sin colisión */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image-container {
+      position: relative;
+      background: white;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-4);
+      box-shadow: var(--shadow-xl);
+      transform: rotate(-2.5deg);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+      width: 100%;
+      max-width: 480px;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .hero-image-container:hover {
+      transform: rotate(0deg) scale(1.02);
+      box-shadow: 0 25px 40px -10px rgba(232, 119, 34, 0.25);
+    }
+
+    .hero-image {
+      width: 100%;
+      height: 380px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      display: block;
+    }
+
+    .hero-pill-overlay {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(8px);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      color: var(--primary);
+      border: 1px solid rgba(232, 119, 34, 0.25);
+      box-shadow: var(--shadow-sm);
+      z-index: 2;
+    }
+
+    /* Badge de premio con animación flotante segura */
+    .award-badge {
+      position: absolute;
+      bottom: -15px;
+      right: -15px;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(12px);
+      padding: var(--space-3) var(--space-5);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      animation: float 3s ease-in-out infinite;
+      z-index: 5;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* Signature Highlights Bar */
     .signature-strip {
-      max-width: 1280px;
-      margin: 0 auto 2.5rem;
-      padding: 0 2rem;
+      margin: var(--space-8) 0 var(--space-12);
     }
     .strip-box {
       background: linear-gradient(135deg, #FFFDF9 0%, #FEF5EB 100%);
       border: 1px solid #F3D9B1;
-      border-radius: 22px;
-      padding: 1.5rem 2rem;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-6) var(--space-8);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: var(--space-6);
       flex-wrap: wrap;
       box-shadow: var(--shadow-sm);
     }
     .strip-info h2 {
       font-family: 'Fraunces', serif;
-      font-size: 1.25rem;
-      color: var(--text-main);
-      margin-bottom: 0.25rem;
+      font-size: var(--text-xl);
+      color: var(--secondary);
+      margin-bottom: var(--space-1);
     }
     .strip-info p {
-      font-size: 0.88rem;
+      font-size: var(--text-sm);
       color: var(--text-secondary);
     }
     .strip-pills {
       display: flex;
-      gap: 0.65rem;
+      gap: var(--space-3);
       flex-wrap: wrap;
     }
     .strip-pill {
       background: var(--surface);
-      border: 1px solid #E6CFA8;
-      padding: 0.5rem 0.9rem;
-      border-radius: 12px;
-      font-size: 0.82rem;
+      border: 1px solid #E2D5BE;
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-sm);
       font-weight: 700;
-      color: var(--text-main);
+      color: var(--secondary);
       cursor: pointer;
-      transition: all 0.2s;
+      transition: all 0.25s ease;
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: var(--space-2);
     }
     .strip-pill:hover {
-      border-color: var(--brand);
-      background: var(--brand-soft);
-      color: var(--brand);
+      border-color: var(--primary);
+      background: rgba(232, 119, 34, 0.08);
+      color: var(--primary);
       transform: translateY(-2px);
     }
 
-    /* Catalog Section */
+    /* 3. Cards de Productos Mejoradas (Jerarquía visual, filtros y grid) */
     .catalog-section {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 2rem 2rem 5rem;
+      padding: var(--space-8) 0 var(--space-16);
     }
     .catalog-header {
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
       flex-wrap: wrap;
-      gap: 1.5rem;
-      margin-bottom: 2rem;
+      gap: var(--space-6);
+      margin-bottom: var(--space-8);
     }
     .catalog-title-group h2 {
       font-family: 'Fraunces', serif;
-      font-size: 2.2rem;
+      font-size: var(--text-3xl);
       font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 0.35rem;
+      color: var(--secondary);
+      margin-bottom: var(--space-2);
     }
     .catalog-title-group p {
       color: var(--text-secondary);
-      font-size: 0.98rem;
+      font-size: var(--text-base);
     }
 
-    .filter-controls {
+    .menu-filters {
       display: flex;
-      gap: 0.6rem;
+      gap: var(--space-3);
+      justify-content: center;
       flex-wrap: wrap;
-      background: var(--bg-secondary);
-      padding: 0.4rem;
-      border-radius: 999px;
-      border: 1px solid var(--border);
+      margin-bottom: var(--space-8);
     }
+
     .filter-btn {
-      border: none;
-      background: transparent;
+      padding: var(--space-3) var(--space-6);
+      background: white;
+      border: 2px solid #E2E8F0;
+      border-radius: var(--radius-xl);
+      font-weight: 700;
+      font-size: var(--text-sm);
+      cursor: pointer;
+      transition: all 0.25s ease;
       color: var(--text-secondary);
       font-family: inherit;
-      font-weight: 700;
-      font-size: 0.85rem;
-      padding: 0.55rem 1.15rem;
-      border-radius: 999px;
-      cursor: pointer;
-      transition: all 0.2s;
     }
+
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
     .filter-btn.active {
-      background: var(--surface);
-      color: var(--brand);
-      box-shadow: var(--shadow-sm);
+      background: var(--secondary);
+      color: white;
+      border-color: var(--secondary);
+      box-shadow: var(--shadow-md);
     }
 
-    /* 10-Variant Grid */
-    .burger-grid {
+    .products-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 1.75rem;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-8);
     }
 
-    .burger-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 22px;
+    .product-card {
+      background: white;
+      border-radius: var(--radius-2xl);
       overflow: hidden;
+      box-shadow: var(--shadow-md);
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
       display: flex;
       flex-direction: column;
-      transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(226, 232, 240, 0.8);
       position: relative;
-    }
-    .burger-card:hover {
-      transform: translateY(-6px);
-      box-shadow: var(--shadow-lg);
-      border-color: #D5C7AD;
     }
 
-    .card-media {
-      position: relative;
-      height: 225px;
-      overflow: hidden;
-      background: #F5EFE6;
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: rgba(232, 119, 34, 0.3);
     }
-    .card-media img {
+
+    .product-image-wrapper {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background: #F8FAFC;
+    }
+
+    .product-image {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.45s ease;
-    }
-    .burger-card:hover .card-media img {
-      transform: scale(1.06);
+      transition: transform 0.5s ease;
+      display: block;
     }
 
-    .category-chip {
-      position: absolute;
-      top: 14px;
-      left: 14px;
-      padding: 0.32rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: rgba(255, 255, 255, 0.94);
-      color: var(--text-main);
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(230, 222, 200, 0.8);
-    }
-    .rating-chip {
-      position: absolute;
-      top: 14px;
-      right: 14px;
-      padding: 0.32rem 0.7rem;
-      border-radius: 999px;
-      font-size: 0.76rem;
-      font-weight: 800;
-      background: rgba(28, 25, 23, 0.82);
-      color: #FBBF24;
-      backdrop-filter: blur(6px);
+    .product-card:hover .product-image {
+      transform: scale(1.08);
     }
 
-    .card-body {
-      padding: 1.4rem;
+    .product-badges {
+      position: absolute;
+      top: var(--space-4);
+      left: var(--space-4);
       display: flex;
       flex-direction: column;
-      flex: 1;
+      gap: var(--space-2);
+      z-index: 2;
     }
 
-    /* Specialty Badge Levels */
-    .specialty-badge {
+    .badge {
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, var(--accent) 0%, #F59E0B 100%);
+      color: var(--secondary);
+    }
+
+    .badge-red {
+      background: var(--danger);
+      color: white;
+    }
+
+    .badge-category {
+      background: rgba(255, 255, 255, 0.94);
+      color: var(--secondary);
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .product-rating {
+      position: absolute;
+      top: var(--space-4);
+      right: var(--space-4);
+      background: rgba(30, 32, 47, 0.85);
+      color: var(--accent);
+      backdrop-filter: blur(6px);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: var(--space-1);
+      z-index: 2;
+    }
+
+    .product-price {
+      position: absolute;
+      bottom: var(--space-4);
+      right: var(--space-4);
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(8px);
+      padding: var(--space-2) var(--space-4);
+      border-radius: var(--radius-lg);
+      font-size: var(--text-xl);
+      font-weight: 800;
+      color: var(--primary);
+      box-shadow: var(--shadow-md);
+      font-family: 'Fraunces', serif;
+      z-index: 2;
+      border: 1px solid rgba(226, 232, 240, 0.8);
+    }
+
+    .product-content {
+      padding: var(--space-6);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-tier-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      align-self: flex-start;
-      font-size: 0.75rem;
+      gap: var(--space-1);
+      font-size: var(--text-xs);
       font-weight: 800;
-      padding: 0.32rem 0.75rem;
-      border-radius: 8px;
-      margin-bottom: 0.75rem;
-      letter-spacing: 0.01em;
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-3);
+      align-self: flex-start;
     }
-    .specialty-badge.suprema {
+    .product-tier-badge.suprema {
       background: #FEF3C7;
       color: #92400E;
       border: 1px solid #FDE68A;
     }
-    .specialty-badge.gourmet {
+    .product-tier-badge.gourmet {
       background: #EDE9FE;
       color: #5B21B6;
       border: 1px solid #DDD6FE;
     }
-    .specialty-badge.doble {
+    .product-tier-badge.doble {
       background: #FEECE8;
       color: #B82B14;
       border: 1px solid #FECACA;
     }
-    .specialty-badge.especial {
+    .product-tier-badge.especial {
       background: #FFEDD5;
       color: #9A3412;
       border: 1px solid #FED7AA;
     }
-    .specialty-badge.clasica,
-    .specialty-badge.clasica-plus {
+    .product-tier-badge.clasica,
+    .product-tier-badge.clasica-plus {
       background: #DCFCE7;
       color: #166534;
       border: 1px solid #BBF7D0;
     }
 
-    .card-title-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.75rem;
-      margin-bottom: 0.5rem;
-    }
-    .card-title {
+    .product-title {
       font-family: 'Fraunces', serif;
-      font-size: 1.3rem;
+      font-size: var(--text-xl);
       font-weight: 800;
-      color: var(--text-main);
+      color: var(--secondary);
+      margin-bottom: var(--space-2);
       line-height: 1.25;
     }
-    .card-price {
-      font-family: 'Fraunces', serif;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--brand);
-      background: var(--brand-soft);
-      padding: 0.2rem 0.65rem;
-      border-radius: 10px;
-      white-space: nowrap;
-    }
 
-    .card-desc {
+    .product-description {
+      font-size: var(--text-sm);
+      line-height: 1.6;
       color: var(--text-secondary);
-      font-size: 0.89rem;
-      margin-bottom: 1.15rem;
+      margin-bottom: var(--space-4);
       flex: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
-    .card-meta {
+    .product-tags {
       display: flex;
-      gap: 1rem;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+      flex-wrap: wrap;
+    }
+
+    .tag {
+      padding: var(--space-1) var(--space-3);
+      background: #F1F5F9;
+      border-radius: var(--radius-md);
+      font-size: var(--text-xs);
       font-weight: 600;
-      padding: 0.7rem 0;
+      color: var(--text-secondary);
+    }
+
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: var(--space-4);
+      padding: var(--space-2) 0;
       border-top: 1px solid var(--border-subtle);
       border-bottom: 1px solid var(--border-subtle);
-      margin-bottom: 1.1rem;
+      font-size: var(--text-xs);
+      color: var(--text-secondary);
+      font-weight: 600;
     }
 
-    .card-actions {
+    .product-actions {
       display: flex;
-      gap: 0.65rem;
+      gap: var(--space-3);
     }
-    .btn-details {
-      flex: 1;
-      background: var(--bg-primary);
-      color: var(--text-main);
-      border: 1px solid var(--border);
-      padding: 0.72rem 1rem;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.86rem;
-      cursor: pointer;
-      transition: all 0.2s;
-      font-family: inherit;
+
+    /* 4. Sección PWA Mejorada (Conexión fluida con la App Móvil) */
+    .pwa-section {
+      background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12) var(--space-8);
+      margin: var(--space-12) 0;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: var(--space-8);
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
     }
-    .btn-details:hover {
-      background: var(--text-main);
-      color: #FFFFFF;
-      border-color: var(--text-main);
+
+    .pwa-section::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 450px;
+      height: 450px;
+      background: radial-gradient(circle, rgba(232, 119, 34, 0.22) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
     }
-    .btn-order-card {
-      background: var(--brand);
-      color: #FFFFFF;
-      border: none;
-      padding: 0.72rem 1.1rem;
-      border-radius: 12px;
-      font-weight: 700;
-      font-size: 0.86rem;
-      text-decoration: none;
+
+    .pwa-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .pwa-label {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      transition: background 0.2s;
-    }
-    .btn-order-card:hover {
-      background: var(--brand-hover);
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 800;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: var(--space-3);
     }
 
-    /* Experience Banner */
+    .pwa-title {
+      font-family: 'Fraunces', serif;
+      font-size: clamp(1.8rem, 3.5vw, var(--text-4xl));
+      font-weight: 800;
+      color: var(--secondary);
+      line-height: 1.2;
+      margin-bottom: var(--space-4);
+    }
+
+    .pwa-description {
+      font-size: var(--text-base);
+      line-height: 1.6;
+      color: #475569;
+      margin-bottom: var(--space-6);
+    }
+
+    .pwa-features {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-2);
+      margin-bottom: var(--space-8);
+    }
+
+    .pwa-feature-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: 600;
+      color: var(--secondary);
+    }
+
+    .pwa-visual {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: var(--space-6);
+    }
+
+    .pwa-icon {
+      font-size: 72px;
+      animation: bounce 2.2s ease-in-out infinite;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+    }
+
+    .pwa-icon:nth-child(2) {
+      animation-delay: 0.25s;
+    }
+
+    .pwa-icon:nth-child(3) {
+      animation-delay: 0.5s;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+
+    /* Experience & Architecture Section */
     .experience-section {
-      max-width: 1280px;
-      margin: 0 auto 4rem;
-      padding: 0 2rem;
+      margin: var(--space-12) 0 var(--space-16);
     }
     .experience-card {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 3rem;
+      border-radius: var(--radius-2xl);
+      padding: var(--space-12);
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2.5rem;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: var(--space-8);
       align-items: center;
       box-shadow: var(--shadow-md);
     }
     .exp-features {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
-      margin-top: 1.5rem;
+      gap: var(--space-4);
+      margin-top: var(--space-6);
     }
     .exp-item {
       background: var(--bg-primary);
       border: 1px solid var(--border-subtle);
-      padding: 1rem;
-      border-radius: 16px;
+      padding: var(--space-4);
+      border-radius: var(--radius-lg);
     }
     .exp-item h4 {
-      font-size: 0.95rem;
-      margin-bottom: 0.25rem;
-      color: var(--text-main);
+      font-size: var(--text-base);
+      margin-bottom: var(--space-1);
+      color: var(--secondary);
+      font-weight: 700;
     }
     .exp-item p {
-      font-size: 0.8rem;
+      font-size: var(--text-sm);
       color: var(--text-secondary);
     }
 
-    /* Modal Details Overlay */
+    /* Interactive Modal Details Overlay */
     .modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(28, 25, 23, 0.55);
-      backdrop-filter: blur(6px);
+      background: rgba(30, 32, 47, 0.65);
+      backdrop-filter: blur(8px);
       display: none;
       align-items: center;
       justify-content: center;
-      padding: 1.5rem;
+      padding: var(--space-4);
       z-index: 999;
     }
     .modal-backdrop.open {
@@ -857,23 +1103,23 @@ const burgers = [
     .modal-box {
       background: var(--surface);
       border: 1px solid var(--border);
-      border-radius: 26px;
-      max-width: 720px;
+      border-radius: var(--radius-2xl);
+      max-width: 680px;
       width: 100%;
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
-      animation: modalSlide 0.25s ease-out;
+      box-shadow: var(--shadow-xl);
+      animation: modalSlide 0.28s cubic-bezier(0.16, 1, 0.3, 1);
       max-height: 90vh;
       display: flex;
       flex-direction: column;
     }
     @keyframes modalSlide {
-      from { opacity: 0; transform: translateY(16px) scale(0.98); }
+      from { opacity: 0; transform: translateY(20px) scale(0.96); }
       to { opacity: 1; transform: translateY(0) scale(1); }
     }
     .modal-img-wrap {
       position: relative;
-      height: 260px;
+      height: 250px;
       background: #F3EDE3;
     }
     .modal-img-wrap img {
@@ -887,66 +1133,292 @@ const burgers = [
       right: 16px;
       width: 40px;
       height: 40px;
-      border-radius: 50%;
+      border-radius: var(--radius-full);
       border: 1px solid var(--border);
-      background: rgba(255, 255, 255, 0.95);
-      color: var(--text-main);
+      background: rgba(255, 255, 255, 0.96);
+      color: var(--secondary);
       font-size: 1.2rem;
       font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: background 0.2s;
+    }
+    .modal-close:hover {
+      background: #FFFFFF;
+      color: var(--primary);
     }
     .modal-content {
-      padding: 1.75rem 2rem;
+      padding: var(--space-6) var(--space-8);
       overflow-y: auto;
     }
     .ingredient-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin: 0.75rem 0 1.25rem;
+      gap: var(--space-2);
+      margin: var(--space-3) 0 var(--space-5);
     }
     .ingredient-tag {
       background: var(--bg-primary);
       border: 1px solid var(--border);
-      padding: 0.35rem 0.75rem;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--text-main);
+      padding: var(--space-1) var(--space-3);
+      border-radius: var(--radius-full);
+      font-size: var(--text-xs);
+      font-weight: 700;
+      color: var(--secondary);
     }
 
-    footer.site-footer {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-      padding: 3rem 2rem;
-      text-align: center;
-      color: var(--text-secondary);
-      font-size: 0.88rem;
+    /* 5. Footer Compacto y Moderno (Rediseñado según la propuesta) */
+    .footer {
+      background: var(--secondary);
+      color: white;
+      padding: var(--space-16) 0 var(--space-8);
+      margin-top: var(--space-16);
     }
 
-    @media (max-width: 960px) {
-      .hero, .experience-card {
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: var(--space-12);
+      margin-bottom: var(--space-12);
+    }
+
+    .footer-brand {
+      max-width: 340px;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: var(--space-3);
+      margin-bottom: var(--space-4);
+      text-decoration: none;
+      color: white;
+    }
+    .footer-logo-title {
+      font-family: 'Fraunces', serif;
+      font-size: var(--text-xl);
+      font-weight: 800;
+    }
+
+    .footer-description {
+      font-size: var(--text-sm);
+      line-height: 1.65;
+      color: #94A3B8;
+      margin-bottom: var(--space-6);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: var(--space-3);
+    }
+    .footer-social a {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--radius-md);
+      background: rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-decoration: none;
+      transition: all 0.25s ease;
+    }
+    .footer-social a:hover {
+      background: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .footer-column h4 {
+      font-size: var(--text-base);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+      color: white;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-3);
+    }
+
+    .footer-links a {
+      color: #94A3B8;
+      text-decoration: none;
+      font-size: var(--text-sm);
+      transition: color 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+    }
+
+    .footer-links a:hover {
+      color: var(--primary-light);
+    }
+
+    .footer-bottom {
+      padding-top: var(--space-8);
+      border-top: 1px solid #334155;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: var(--text-sm);
+      color: #94A3B8;
+    }
+
+    .footer-bottom a {
+      color: #94A3B8;
+      text-decoration: none;
+      margin-left: var(--space-4);
+      transition: color 0.2s ease;
+    }
+    .footer-bottom a:hover {
+      color: var(--primary-light);
+    }
+
+    /* 6. Responsive Design (Ajustes para Tablet y Móvil) */
+    @media (max-width: 1024px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: var(--space-12);
+        padding: var(--space-8) 0;
+      }
+
+      .hero-content {
+        max-width: 100%;
+      }
+
+      .hero-cta-group {
+        justify-content: center;
+      }
+
+      .hero-stats {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .pwa-section {
+        grid-template-columns: 1fr;
+        text-align: center;
+        padding: var(--space-10) var(--space-6);
+      }
+      .pwa-features {
+        align-items: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: var(--text-4xl);
+      }
+
+      .hero-stats {
+        flex-direction: column;
+        gap: var(--space-4);
+        align-items: center;
+      }
+
+      .products-grid {
         grid-template-columns: 1fr;
       }
-      .hero-stats {
-        grid-template-columns: repeat(2, 1fr);
+
+      .experience-card {
+        grid-template-columns: 1fr;
+        padding: var(--space-6);
+      }
+      .exp-features {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-8);
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: var(--space-4);
+        text-align: center;
+      }
+      .footer-bottom div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: var(--space-3);
+      }
+      .footer-bottom a {
+        margin-left: 0;
+      }
+
+      .award-badge {
+        bottom: 10px;
+        right: 10px;
+        padding: var(--space-2) var(--space-3);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .container {
+        padding: 0 var(--space-4);
+      }
+
+      .btn-primary, .btn-secondary, .btn-dark {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .menu-filters {
+        overflow-x: auto;
+        flex-wrap: nowrap;
+        padding: var(--space-2) 0;
+        -webkit-overflow-scrolling: touch;
+        justify-content: flex-start;
+      }
+
+      .filter-btn {
+        flex-shrink: 0;
+        white-space: nowrap;
+      }
+
+      .hero-image {
+        height: 280px;
+      }
+    }
+
+    /* Accesibilidad y soporte para reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
       }
     }
   </style>
 </head>
 <body>
+  <!-- Top Announcement Bar -->
   <div class="top-bar">
-    <span>🍔 <strong>HAMBURGER RAPID</strong> — Primera Edición Comercial Gourmet</span>
+    <span>🍔 <strong>HAMBURGER RAPID</strong> — Fast Food Gourmet de Alta Velocidad</span>
     <span>•</span>
-    <span>Envío Express en <span class="highlight">menos de 15 minutos</span> o tu próxima Burger Real es gratis</span>
+    <span>Envío Express garantizado en <span class="highlight">menos de 15 minutos</span> o tu orden es cortesía de la casa</span>
   </div>
 
+  <!-- Navbar -->
   <header class="navbar">
-    <div class="nav-container">
-      <a href="/" class="brand-logo">
+    <div class="container nav-container">
+      <a href="/" class="brand-logo" id="nav-brand-logo">
         <div class="brand-icon">🍔</div>
         <div class="brand-text">
           <span class="brand-title">Hamburger Rapid</span>
@@ -956,197 +1428,291 @@ const burgers = [
 
       <nav class="nav-links">
         <a href="#catalogo">Catálogo (10 Variantes)</a>
-        <a href="#especiales">Línea Real & Especiales</a>
-        <a href="#experiencia">Calidad Rapid</a>
+        <a href="#especiales">Línea Real</a>
+        <a href="#pwa">PWA Móvil</a>
+        <a href="#experiencia">Calidad</a>
       </nav>
 
       <div class="nav-actions">
-        <a href="/admin" class="btn btn-outline">📊 Dashboard Admin</a>
-        <a href="/app" class="btn btn-primary">📱 Pedir en App Móvil</a>
+        <a href="/admin" class="btn-secondary" style="padding: var(--space-2) var(--space-4); font-size: var(--text-sm);">
+          📊 Admin
+        </a>
+        <a href="/app" class="btn-primary" style="padding: var(--space-2) var(--space-5); font-size: var(--text-sm);">
+          📱 Pedir en App
+        </a>
       </div>
     </div>
   </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div>
-      <div class="hero-pill">✨ NUEVA COLECCIÓN COMERCIAL • 10 VARIANTES DESTACADAS</div>
-      <h1>
-        El arte de la hamburguesa <span class="accent">a velocidad real.</span>
-      </h1>
-      <p class="lead">
-        Desde nuestra legendaria <strong>Rey de las Burgers</strong> flameada a la leña de roble hasta la icónica <strong>Burger Real Clásica</strong>. Ingredientes frescos de origen local, pan brioche horneado cada mañana y cocción perfecta al instante.
-      </p>
-
-      <div class="hero-cta-group">
-        <a href="#catalogo" class="btn btn-primary">Ver las 10 Variantes Destacadas ↓</a>
-        <a href="/app" class="btn btn-outline">Simular Compra en PWA Móvil →</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat-item">
-          <span class="stat-value">10</span>
-          <span class="stat-label">Variantes de Autor</span>
+  <!-- Hero Section Mejorado (Solución de superposición y jerarquía) -->
+  <main class="container">
+    <section class="hero-section">
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>👑</span>
+          <span>Calidad Suprema • Carne 100% Angus Certificada</span>
         </div>
-        <div class="stat-item">
-          <span class="stat-value">100%</span>
-          <span class="stat-label">Res Angus & Wagyu</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value">8 min</span>
-          <span class="stat-label">Tiempo en Parrilla</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value">4.9 ★</span>
-          <span class="stat-label">+3,400 Clientes</span>
-        </div>
-      </div>
-    </div>
 
-    <div class="hero-showcase">
-      <div class="showcase-tag">👑 #1 Más Vendida • Nivel Suprema</div>
-      <img
-        class="showcase-img"
-        src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=85"
-        alt="Rey de las Burgers"
-      />
-      <div class="showcase-body">
-        <div>
-          <span style="font-size: 0.76rem; font-weight: 800; color: var(--amber); text-transform: uppercase;">Edición Insignia Hamburger Rapid</span>
-          <div class="showcase-title">Rey de las Burgers</div>
-          <p style="font-size: 0.85rem; color: var(--text-secondary);">Angus 220g a la leña, doble cheddar 18 meses y panceta al maple.</p>
+        <h1 class="hero-title">
+          El Sabor del Auténtico<br>
+          <span class="highlight">Fast Food Gourmet</span>
+        </h1>
+
+        <p class="hero-description">
+          Recetas de autor preparadas al instante con fuego vivo, ingredientes nobles y pan brioche horneado cada mañana. Deleita tu paladar con nuestras 10 hamburguesas exclusivas de velocidad real.
+        </p>
+
+        <div class="hero-cta-group">
+          <a href="#catalogo" class="btn-primary" id="cta-explore-catalog">
+            <span>🍔</span>
+            Explorar Catálogo (10 Variantes)
+          </a>
+          <a href="/app" class="btn-secondary" id="cta-pwa-simulate">
+            <span>📱</span>
+            Simular Compra en PWA
+          </a>
         </div>
-        <div style="text-align: right;">
-          <div class="showcase-price">$14.90</div>
-          <button class="btn-details" style="margin-top: 0.4rem; padding: 0.45rem 0.9rem;" data-burger-id="101">
-            Ver Detalles
-          </button>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- Signature Highlights Bar -->
-  <section id="especiales" class="signature-strip">
-    <div class="strip-box">
-      <div class="strip-info">
-        <h2>🔥 Cuarteto Insignia Hamburger Rapid</h2>
-        <p>Selecciona cualquiera de nuestras 4 creaciones estelares para inspeccionar su ficha técnica e ingredientes:</p>
-      </div>
-      <div class="strip-pills">
-        <button class="strip-pill" data-burger-id="101">👑 Rey de las Burgers ($14.90)</button>
-        <button class="strip-pill" data-burger-id="102">⭐ Burger Real Clásica ($9.90)</button>
-        <button class="strip-pill" data-burger-id="103">🔥 Burger Real Doble ($12.90)</button>
-        <button class="strip-pill" data-burger-id="104">💎 Burger Doble Especial ($15.50)</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Main Catalog of 10 Variants -->
-  <section id="catalogo" class="catalog-section">
-    <div class="catalog-header">
-      <div class="catalog-title-group">
-        <h2>Catálogo de 10 Variantes Destacadas</h2>
-        <p>Explora nuestras hamburguesas clásicas y niveles de especialidad gourmet con precios transparentes.</p>
-      </div>
-
-      <div class="filter-controls" role="tablist" aria-label="Filtrar hamburguesas">
-        <button class="filter-btn active" data-filter="all">Todas (10)</button>
-        <button class="filter-btn" data-filter="Especiales">Especiales (5)</button>
-        <button class="filter-btn" data-filter="Clásicas">Clásicas (5)</button>
-      </div>
-    </div>
-
-    <div class="burger-grid" id="burgerGrid">
-      {burgers.map((burger) => (
-        <article class="burger-card" data-category={burger.category}>
-          <div class="card-media">
-            <img src={burger.image} alt={burger.name} loading="lazy" />
-            <span class="category-chip">{burger.category}</span>
-            <span class="rating-chip">★ {burger.rating} ({burger.reviews})</span>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value">4.9 ★</span>
+            <span class="stat-label">+15,000 Reseñas</span>
           </div>
+          <div class="stat-item">
+            <span class="stat-value">12 min</span>
+            <span class="stat-label">Tiempo Promedio</span>
+          </div>
+          <div class="stat-item">
+            <span class="stat-value">100%</span>
+            <span class="stat-label">Carne Angus Fresca</span>
+          </div>
+        </div>
+      </div>
 
-          <div class="card-body">
-            <span class={`specialty-badge ${burger.specialtyTier}`}>
-              {burger.badge}
-            </span>
-
-            <div class="card-title-row">
-              <h3 class="card-title">{burger.name}</h3>
-              <span class="card-price">${burger.price.toFixed(2)}</span>
-            </div>
-
-            <p class="card-desc">{burger.description}</p>
-
-            <div class="card-meta">
-              <span>⏱️ {burger.prepTime}</span>
-              <span>🔥 {burger.calories}</span>
-              <span>⚖️ {burger.weight}</span>
-            </div>
-
-            <div class="card-actions">
-              <button
-                type="button"
-                class="btn-details"
-                data-burger-id={burger.id}
-              >
-                🔍 Ver Detalles
-              </button>
-              <a href={`/app?select=${burger.id}`} class="btn-order-card">
-                Pedir ➔
-              </a>
+      <div class="hero-visual">
+        <div class="hero-image-container">
+          <div class="hero-pill-overlay">👑 #1 Más Vendida • Nivel Suprema</div>
+          <img
+            src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=900&auto=format&fit=crop&q=85"
+            alt="Rey de las Burgers — Hamburger Rapid"
+            class="hero-image"
+            loading="eager"
+          />
+          <div class="award-badge">
+            <span style="font-size: 28px;">🏆</span>
+            <div>
+              <div style="font-weight: 800; font-size: 13px; color: var(--secondary);">Premio a la Mejor Burger</div>
+              <div style="font-size: 11px; color: var(--text-secondary); font-weight: 600;">★ 5.0 Golden Flame Award 2026</div>
             </div>
           </div>
-        </article>
-      ))}
-    </div>
-  </section>
+        </div>
+      </div>
+    </section>
 
-  <!-- Quality & Architecture Section -->
-  <section id="experiencia" class="experience-section">
-    <div class="experience-card">
-      <div>
-        <span class="hero-pill" style="margin-bottom: 0.75rem;">⚡ ECOSISTEMA HAMBURGER RAPID</span>
-        <h2 style="font-family: 'Fraunces', serif; font-size: 2rem; margin-bottom: 0.75rem;">
-          Experiencia omnicanal conectada en tiempo real
+    <!-- Signature Highlights Strip -->
+    <section id="especiales" class="signature-strip">
+      <div class="strip-box">
+        <div class="strip-info">
+          <h2>🔥 Cuarteto Insignia Hamburger Rapid</h2>
+          <p>Selecciona cualquiera de nuestras 4 creaciones estelares para ver su ficha técnica e ingredientes:</p>
+        </div>
+        <div class="strip-pills">
+          <button class="strip-pill" data-burger-id="101">👑 Rey de las Burgers ($14.90)</button>
+          <button class="strip-pill" data-burger-id="102">⭐ Burger Real Clásica ($9.90)</button>
+          <button class="strip-pill" data-burger-id="103">🔥 Burger Real Doble ($12.90)</button>
+          <button class="strip-pill" data-burger-id="104">💎 Burger Doble Especial ($15.50)</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Main Catalog Section with Filter and Improved Cards -->
+    <section id="catalogo" class="catalog-section">
+      <div class="catalog-header">
+        <div class="catalog-title-group">
+          <h2>Catálogo de 10 Variantes Destacadas</h2>
+          <p>Explora nuestras hamburguesas clásicas y creaciones gourmet de autor con recetas exclusivas.</p>
+        </div>
+      </div>
+
+      <!-- Menu Filters -->
+      <div class="menu-filters" role="tablist" aria-label="Filtrar hamburguesas">
+        <button class="filter-btn active" data-filter="all">Todas las Variantes (10)</button>
+        <button class="filter-btn" data-filter="Especiales">Línea Especiales (5)</button>
+        <button class="filter-btn" data-filter="Clásicas">Línea Clásicas (5)</button>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="burgerGrid">
+        {burgers.map((burger) => (
+          <article class="product-card" data-category={burger.category}>
+            <div class="product-image-wrapper">
+              <img
+                src={burger.image}
+                alt={burger.name}
+                class="product-image"
+                loading="lazy"
+                decoding="async"
+              />
+              <div class="product-badges">
+                <span class="badge badge-category">{burger.category}</span>
+                {burger.specialtyTier === 'suprema' && <span class="badge badge-gold">Corona Real</span>}
+                {burger.specialtyTier === 'gourmet' && <span class="badge badge-gold">Gourmet Wagyu</span>}
+                {burger.specialtyTier === 'doble' && <span class="badge badge-red">Doble Carne</span>}
+              </div>
+
+              <div class="product-rating">
+                <span>★</span> {burger.rating} ({burger.reviews})
+              </div>
+
+              <div class="product-price">
+                ${burger.price.toFixed(2)}
+              </div>
+            </div>
+
+            <div class="product-content">
+              <span class={`product-tier-badge ${burger.specialtyTier}`}>
+                {burger.badge}
+              </span>
+
+              <h3 class="product-title">{burger.name}</h3>
+
+              <p class="product-description">{burger.description}</p>
+
+              <div class="product-tags">
+                {burger.ingredients.slice(0, 3).map((ing) => (
+                  <span class="tag">{ing}</span>
+                ))}
+              </div>
+
+              <div class="product-meta">
+                <span>⏱️ {burger.prepTime}</span>
+                <span>🔥 {burger.calories}</span>
+                <span>⚖️ {burger.weight}</span>
+              </div>
+
+              <div class="product-actions">
+                <button
+                  type="button"
+                  class="btn-secondary"
+                  style="flex: 1; padding: var(--space-2) var(--space-3); font-size: var(--text-sm);"
+                  data-burger-id={burger.id}
+                >
+                  <span>🔍</span> Detalles
+                </button>
+                <a
+                  href={`/app?select=${burger.id}`}
+                  class="btn-dark"
+                  style="flex: 1.3; padding: var(--space-2) var(--space-3);"
+                >
+                  <span>🛒</span> Pedir
+                </a>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- 4. Sección PWA Mejorada -->
+    <section id="pwa" class="pwa-section">
+      <div class="pwa-content">
+        <div class="pwa-label">
+          <span>📱</span>
+          <span>Progressive Web App Oficial</span>
+        </div>
+
+        <h2 class="pwa-title">
+          Pide en Segundos desde tu Móvil o Escritorio
         </h2>
-        <p style="color: var(--text-secondary); font-size: 0.96rem;">
-          Nuestra plataforma integra catálogo web de alta velocidad, aplicación móvil progresiva (PWA) para pedidos instantáneos y un centro de control administrativo con telemetría de consumo y base de datos en vivo.
+
+        <p class="pwa-description">
+          Disfruta de la experiencia gastronómica más fluida: simula pedidos instantáneos, aplica cupones de descuento exclusivos, añade combos y sigue el estado de tu cocina paso a paso con soporte offline nativo.
         </p>
-        <div class="exp-features">
-          <div class="exp-item">
-            <h4>🥖 Brioche Horneado Hoy</h4>
-            <p>Elaborado cada madrugada con mantequilla de pastura y dorado al momento.</p>
+
+        <div class="pwa-features">
+          <div class="pwa-feature-item">
+            <span>✅</span>
+            <span>Sin instalaciones pesadas: funciona directo en navegador y se instala en 1 clic</span>
           </div>
-          <div class="exp-item">
-            <h4>🥩 Blend Propio Recién Molido</h4>
-            <p>Cortes seleccionados sin congelar, sellados en parrilla de hierro a 280°C.</p>
+          <div class="pwa-feature-item">
+            <span>✅</span>
+            <span>4 Pestañas completas: Menú, Ofertas Especiales, Órdenes y Perfil VIP</span>
           </div>
-          <div class="exp-item">
-            <h4>📱 App Móvil con 4 Pestañas</h4>
-            <p>Menú interactivo, Ofertas exclusivas, seguimiento de Órdenes y Perfil.</p>
+          <div class="pwa-feature-item">
+            <span>✅</span>
+            <span>Simulación de pago contactless, cupones con hasta 20% OFF y entrega express</span>
           </div>
-          <div class="exp-item">
-            <h4>📊 Inteligencia de Consumo</h4>
-            <p>Panel Admin con métricas de clientes según consumo y salud de BD.</p>
+        </div>
+
+        <div class="hero-cta-group" style="margin-bottom: 0;">
+          <a href="/app" class="btn-primary" style="background: var(--secondary);">
+            <span>📲</span>
+            Abrir App PWA (/app)
+          </a>
+          <a href="/admin" class="btn-secondary">
+            <span>📊</span>
+            Ver Métricas en Admin
+          </a>
+        </div>
+      </div>
+
+      <div class="pwa-visual">
+        <span class="pwa-icon" title="Burger Caliente">🍔</span>
+        <span class="pwa-icon" title="Entrega Express">🛵</span>
+        <span class="pwa-icon" title="Velocidad Real">⚡</span>
+      </div>
+    </section>
+
+    <!-- Experience & Architecture Section -->
+    <section id="experiencia" class="experience-section">
+      <div class="experience-card">
+        <div>
+          <div class="hero-badge" style="margin-bottom: var(--space-3);">
+            <span>⚡</span>
+            <span>ECOSISTEMA HAMBURGER RAPID</span>
+          </div>
+          <h2 style="font-family: 'Fraunces', serif; font-size: var(--text-2xl); margin-bottom: var(--space-3); color: var(--secondary);">
+            Experiencia omnicanal conectada en tiempo real
+          </h2>
+          <p style="color: var(--text-secondary); font-size: var(--text-sm); line-height: 1.6;">
+            Nuestra plataforma integra un catálogo web comercial de alta velocidad, aplicación web progresiva (PWA) para pedidos instantáneos y un centro de control administrativo con telemetría de pedidos y base de datos sincronizada.
+          </p>
+          <div class="exp-features">
+            <div class="exp-item">
+              <h4>🥖 Brioche Artesanal</h4>
+              <p>Horneado a diario con mantequilla de pastura y sellado al momento.</p>
+            </div>
+            <div class="exp-item">
+              <h4>🥩 Blend Angus & Wagyu</h4>
+              <p>Cortes frescos de res sin aditivos, sellados en plancha de hierro a 280°C.</p>
+            </div>
+            <div class="exp-item">
+              <h4>📱 PWA con 4 Vistas</h4>
+              <p>Menú interactivo, combos de descuento, simulación de órdenes y perfil VIP.</p>
+            </div>
+            <div class="exp-item">
+              <h4>📊 Panel Administrativo</h4>
+              <p>Métricas comerciales en vivo, salud del sistema y catálogo administrable.</p>
+            </div>
+          </div>
+        </div>
+
+        <div style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--radius-xl); padding: var(--space-8); text-align: center;">
+          <div style="font-size: 3.5rem; margin-bottom: var(--space-3);">🍔</div>
+          <h3 style="font-family: 'Fraunces', serif; font-size: var(--text-xl); margin-bottom: var(--space-2); color: var(--secondary);">
+            ¿Listo para degustar tu Burger Real?
+          </h3>
+          <p style="color: var(--text-secondary); font-size: var(--text-sm); margin-bottom: var(--space-6);">
+            Prueba la PWA móvil ahora mismo para seleccionar tus ingredientes, redimir cupones activos y verificar la simulación completa.
+          </p>
+          <div style="display: flex; gap: var(--space-3); justify-content: center; flex-wrap: wrap;">
+            <a href="/app" class="btn-primary">Pedir en PWA (/app)</a>
+            <a href="/admin" class="btn-secondary">Panel Admin (/admin)</a>
           </div>
         </div>
       </div>
-      <div style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 22px; padding: 2rem; text-align: center;">
-        <div style="font-size: 3rem; margin-bottom: 0.75rem;">📱</div>
-        <h3 style="font-family: 'Fraunces', serif; font-size: 1.5rem; margin-bottom: 0.5rem;">
-          ¿Listo para armar tu pedido?
-        </h3>
-        <p style="color: var(--text-secondary); font-size: 0.92rem; margin-bottom: 1.5rem;">
-          Abre nuestra PWA Móvil para elegir tus hamburguesas, aplicar cupones de oferta y simular tu compra de principio a fin.
-        </p>
-        <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-          <a href="/app" class="btn btn-primary">Abrir App Móvil (/app)</a>
-          <a href="/admin" class="btn btn-outline">Abrir Panel Admin (/admin)</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
   <!-- Interactive Burger Detail Modal -->
   <div class="modal-backdrop" id="detailModal" aria-hidden="true">
@@ -1156,49 +1722,111 @@ const burgers = [
         <button class="modal-close" id="closeModalBtn" aria-label="Cerrar detalles">✕</button>
       </div>
       <div class="modal-content">
-        <div style="display: flex; justify-content: space-between; align-items: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
-          <span id="modalBadge" class="specialty-badge suprema"></span>
-          <span id="modalMeta" style="font-size: 0.82rem; font-weight: 700; color: var(--text-muted);"></span>
+        <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--space-4); flex-wrap: wrap; margin-bottom: var(--space-2);">
+          <span id="modalBadge" class="product-tier-badge suprema"></span>
+          <span id="modalMeta" style="font-size: var(--text-xs); font-weight: 700; color: var(--text-muted);"></span>
         </div>
 
-        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.75rem;">
-          <h3 id="modalTitle" style="font-family: 'Fraunces', serif; font-size: 1.75rem; font-weight: 800;"></h3>
-          <span id="modalPrice" style="font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 800; color: var(--brand);"></span>
+        <div style="display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-4); margin-bottom: var(--space-3);">
+          <h3 id="modalTitle" style="font-family: 'Fraunces', serif; font-size: var(--text-2xl); font-weight: 800; color: var(--secondary);"></h3>
+          <span id="modalPrice" style="font-family: 'Fraunces', serif; font-size: var(--text-2xl); font-weight: 800; color: var(--primary);"></span>
         </div>
 
-        <p id="modalDesc" style="color: var(--text-secondary); font-size: 0.96rem; margin-bottom: 1.25rem;"></p>
+        <p id="modalDesc" style="color: var(--text-secondary); font-size: var(--text-sm); line-height: 1.6; margin-bottom: var(--space-4);"></p>
 
-        <h4 style="font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 800;">
-          Ingredientes de la Receta
+        <h4 style="font-size: var(--text-xs); text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 800;">
+          Ingredientes Seleccionados
         </h4>
         <div class="ingredient-list" id="modalIngredients"></div>
 
-        <div style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: 14px; padding: 0.9rem 1.1rem; margin-bottom: 1.5rem; font-size: 0.86rem;">
+        <div style="background: var(--bg-primary); border: 1px solid var(--border); border-radius: var(--radius-md); padding: var(--space-3) var(--space-4); margin-bottom: var(--space-6); font-size: var(--text-sm);">
           <strong>🍟 Maridaje Recomendado del Chef:</strong> <span id="modalPairing" style="color: var(--text-secondary);"></span>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 0.75rem; flex-wrap: wrap;">
-          <button type="button" class="btn btn-outline" id="modalSecondaryClose">Seguir Explorando</button>
-          <a id="modalOrderLink" href="/app" class="btn btn-primary">Simular Compra en App Móvil ➔</a>
+        <div style="display: flex; justify-content: flex-end; gap: var(--space-3); flex-wrap: wrap;">
+          <button type="button" class="btn-secondary" id="modalSecondaryClose" style="padding: var(--space-2) var(--space-4); font-size: var(--text-sm);">
+            Seguir Explorando
+          </button>
+          <a id="modalOrderLink" href="/app" class="btn-primary" style="padding: var(--space-2) var(--space-5); font-size: var(--text-sm);">
+            Simular Compra en App ➔
+          </a>
         </div>
       </div>
     </div>
   </div>
 
-  <footer class="site-footer">
-    <p><strong>Hamburger Rapid Commercial v1.0</strong> &bull; Arquitectura Full-Stack con Paleta Clara Premium</p>
-    <p style="margin-top: 0.4rem;">
-      <a href="/" style="color: var(--brand); text-decoration: none; font-weight: 700;">E-commerce Landing</a> &bull;
-      <a href="/app" style="color: var(--brand); text-decoration: none; font-weight: 700;">PWA Mobile App</a> &bull;
-      <a href="/admin" style="color: var(--brand); text-decoration: none; font-weight: 700;">Admin Dashboard</a> &bull;
-      <a href="/api/health" style="color: var(--brand); text-decoration: none; font-weight: 700;">API Health</a>
-    </p>
+  <!-- 5. Footer Compacto y Moderno (Rediseñado según la propuesta) -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="footer-logo">
+            <div class="brand-icon" style="width: 36px; height: 36px; font-size: 1.2rem;">🍔</div>
+            <span class="footer-logo-title">Hamburger Rapid</span>
+          </a>
+          <p class="footer-description">
+            Pioneros en fast food gourmet de autor. Carne 100% Angus y Wagyu certificada, pan brioche recién horneado y velocidad de entrega express insuperable.
+          </p>
+          <div class="footer-social">
+            <a href="#" aria-label="Instagram">📸</a>
+            <a href="#" aria-label="TikTok">🎵</a>
+            <a href="#" aria-label="Twitter">🐦</a>
+            <a href="#" aria-label="YouTube">▶️</a>
+          </div>
+        </div>
+
+        <div class="footer-column">
+          <h4>Catálogo Real</h4>
+          <ul class="footer-links">
+            <li><a href="#catalogo">👑 Rey de las Burgers</a></li>
+            <li><a href="#catalogo">⭐ Burger Real Clásica</a></li>
+            <li><a href="#catalogo">🔥 Burger Real Doble</a></li>
+            <li><a href="#catalogo">💎 Burger Doble Especial</a></li>
+            <li><a href="#catalogo">🍟 Acompañamientos & Salsas</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Ecosistema</h4>
+          <ul class="footer-links">
+            <li><a href="/app">📱 PWA Móvil de Pedidos</a></li>
+            <li><a href="/admin">📊 Panel de Métricas Admin</a></li>
+            <li><a href="/api/health">⚡ Estado de la API</a></li>
+            <li><a href="/api/products">📦 JSON Catálogo REST</a></li>
+            <li><a href="#pwa">📲 Instalar en Pantalla de Inicio</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-column">
+          <h4>Horarios & Delivery</h4>
+          <ul class="footer-links">
+            <li><span>📍 Madrid • Envíos en toda la ciudad</span></li>
+            <li><span>⏰ Lun - Dom: 12:00h a 23:30h</span></li>
+            <li><span>🛵 Tiempo Express: 12 a 15 min</span></li>
+            <li><a href="tel:+34900842100">📞 +34 900 842 100</a></li>
+            <li><a href="mailto:hola@hamburgerrapid.com">✉️ hola@hamburgerrapid.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 <strong>Hamburger Rapid</strong>. Todos los derechos reservados.
+        </div>
+        <div>
+          <a href="#">Privacidad</a>
+          <a href="#">Términos y Condiciones</a>
+          <a href="#">Alérgenos & Nutrición</a>
+          <a href="#">Certificación Angus</a>
+        </div>
+      </div>
+    </div>
   </footer>
 
   <script define:vars={{ burgers }}>
-    // Filter logic
+    // Filtro interactivo de hamburguesas
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.burger-card');
+    const cards = document.querySelectorAll('.product-card');
 
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
@@ -1217,7 +1845,7 @@ const burgers = [
       });
     });
 
-    // Modal logic
+    // Lógica del modal interactivo
     const modal = document.getElementById('detailModal');
     const modalImg = document.getElementById('modalImage');
     const modalBadge = document.getElementById('modalBadge');
@@ -1236,7 +1864,7 @@ const burgers = [
       modalImg.src = burger.image;
       modalImg.alt = burger.name;
       modalBadge.textContent = burger.badge;
-      modalBadge.className = `specialty-badge ${burger.specialtyTier}`;
+      modalBadge.className = `product-tier-badge ${burger.specialtyTier}`;
       modalMeta.textContent = `${burger.category} • ⏱️ ${burger.prepTime} • 🔥 ${burger.calories} • ★ ${burger.rating}`;
       modalTitle.textContent = burger.name;
       modalPrice.textContent = `$${burger.price.toFixed(2)}`;
@@ -1267,8 +1895,12 @@ const burgers = [
       });
     });
 
-    document.getElementById('closeModalBtn').addEventListener('click', closeBurgerModal);
-    document.getElementById('modalSecondaryClose').addEventListener('click', closeBurgerModal);
+    const closeBtn = document.getElementById('closeModalBtn');
+    if (closeBtn) closeBtn.addEventListener('click', closeBurgerModal);
+
+    const secCloseBtn = document.getElementById('modalSecondaryClose');
+    if (secCloseBtn) secCloseBtn.addEventListener('click', closeBurgerModal);
+
     modal.addEventListener('click', (e) => {
       if (e.target === modal) closeBurgerModal();
     });
