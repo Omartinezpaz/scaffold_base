@@ -1,24 +1,33 @@
 :root {
-  --bg: #FAF7F2;
-  --bg-secondary: #F3EDE3;
-  --surface: #FFFFFF;
-  --surface-warm: #FFFDF9;
-  --border: #E6DEC8;
-  --border-subtle: #EFE9DC;
-  --text-main: #1C1917;
-  --text-secondary: #57534E;
-  --text-muted: #78716C;
-  --brand: #D9381E;
-  --brand-hover: #B82B14;
-  --brand-soft: #FEECE8;
-  --amber: #D97706;
-  --amber-soft: #FEF3C7;
-  --success: #15803D;
-  --success-soft: #DCFCE7;
-  --purple: #6D28D9;
-  --purple-soft: #EDE9FE;
-  --shadow-sm: 0 4px 14px rgba(28, 25, 23, 0.05);
-  --shadow-md: 0 12px 30px rgba(28, 25, 23, 0.08);
+  /* Burger Factory Palette: Dark Charcoal & Cheddar Amber Gold */
+  --bg: #0D0D0D;
+  --bg-secondary: #050505;
+  --surface: #141414;
+  --surface-warm: #1C1C1C;
+  --border: #262626;
+  --border-subtle: #1C1C1C;
+  --text-main: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+
+  /* Cheddar Amber Gold */
+  --brand: #F5A623;
+  --brand-hover: #D98207;
+  --brand-soft: rgba(245, 166, 35, 0.16);
+  --primary: #F5A623;
+  --primary-dark: #D98207;
+  --secondary: #0D0D0D;
+
+  --amber: #F5A623;
+  --amber-soft: rgba(245, 166, 35, 0.22);
+  --success: #10B981;
+  --success-soft: rgba(16, 185, 129, 0.2);
+  --purple: #A855F7;
+  --purple-soft: rgba(168, 85, 247, 0.2);
+  
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 12px 30px rgba(0, 0, 0, 0.7);
+  --shadow-gold: 0 6px 20px rgba(245, 166, 35, 0.35);
 }
 
 * {
@@ -35,8 +44,20 @@ body {
   min-height: 100vh;
 }
 
-.serif-heading {
-  font-family: 'Fraunces', serif;
+.serif-heading,
+.display-heading,
+.display-title {
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.script-heading {
+  font-family: 'Caveat', cursive;
+}
+
+input, select, textarea {
+  color-scheme: dark;
 }
 
 ::-webkit-scrollbar {
@@ -47,6 +68,6 @@ body {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: #D6CBB5;
+  background: #2D2D2D;
   border-radius: 4px;
 }

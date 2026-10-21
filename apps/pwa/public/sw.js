@@ -1,4 +1,4 @@
-const CACHE_NAME = 'hamburger-rapid-v3';
+const CACHE_NAME = 'hamburger-rapid-v4';
 const ASSETS_TO_CACHE = [
   '/app/',
   '/app/index.html',
@@ -9,7 +9,7 @@ const ASSETS_TO_CACHE = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      console.log('📱 [Service Worker] Pre-cacheando assets de la PWA v3');
+      console.log('📱 [Service Worker] Pre-cacheando assets de la PWA v4 Burger Factory');
       return cache.addAll(ASSETS_TO_CACHE);
     }).then(() => self.skipWaiting())
   );

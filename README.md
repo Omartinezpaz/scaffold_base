@@ -1,12 +1,12 @@
 # 🍔 Hamburger Rapid — Fast Food Gourmet & Burger Factory
 
-Plataforma omnicanal para **Hamburger Rapid**, estructurada como un monorepo arquitectónico de alto rendimiento con diseño visual de autor basado en el estilo **Burger Factory** (Dark Charcoal & Cheddar Amber Gold).
+Plataforma omnicanal para **Hamburger Rapid**, estructurada como un monorepo arquitectónico de alto rendimiento con diseño visual de autor unificado basado en el estilo **Burger Factory** (Dark Charcoal & Cheddar Amber Gold) en todas sus aplicaciones: **Landing E-commerce**, **PWA Mobile** y **Operations Admin Dashboard**.
 
 ---
 
 ## 🎨 Referencia Visual de Diseño
 
-La capa de **Landing E-commerce** ha sido rediseñada adoptando el estilo visual, la paleta de colores y los componentes de la imagen de referencia ubicada en:
+El ecosistema completo (Landing, PWA Móvil y Admin Center) ha sido unificado adoptando el estilo visual, la paleta de colores y los componentes de la imagen de referencia ubicada en:
 
 📁 **`assets-references\images\5354a05ccc58c0d62da48539dcc550e8.jpg`**
 

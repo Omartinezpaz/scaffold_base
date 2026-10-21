@@ -1,33 +1,38 @@
 :root {
-  /* Paleta de colores - Gourmet Flame & Slate */
-  --primary: #FF6B00;
-  --primary-dark: #E05300;
-  --primary-light: #FF9248;
-  --secondary: #0F172A;
-  --accent: #FFD166;
+  /* Paleta Burger Factory: Dark Charcoal & Cheddar Amber Gold */
+  --primary: #F5A623;
+  --primary-dark: #D98207;
+  --primary-light: #FBECCB;
+  --secondary: #0D0D0D;
+  --accent: #F5A623;
   --success: #10B981;
   --danger: #EF4444;
 
   /* Aliases compatibles */
   --brand: var(--primary);
   --brand-hover: var(--primary-dark);
-  --brand-soft: rgba(255, 107, 0, 0.12);
-  --amber: #F59E0B;
-  --amber-soft: #FEF3C7;
-  --success-soft: #D1FAE5;
+  --brand-soft: rgba(245, 166, 35, 0.16);
+  --amber: #F5A623;
+  --amber-soft: rgba(245, 166, 35, 0.22);
+  --success-soft: rgba(16, 185, 129, 0.2);
 
-  /* Fondos y superficies (Modo Claro - Crisp Slate & Pearl) */
-  --bg-outer: #0F172A;
-  --bg-app: #F8FAFC;
-  --surface: #FFFFFF;
-  --surface-warm: #F1F5F9;
-  --border: #E2E8F0;
-  --border-subtle: #F8FAFC;
+  /* Fondos y superficies por defecto (Dark Charcoal Burger Factory) */
+  --bg-outer: #050505;
+  --bg-app: #0D0D0D;
+  --surface: #141414;
+  --surface-warm: #1C1C1C;
+  --border: #242424;
+  --border-subtle: #181818;
 
   /* Colores de texto */
-  --text-main: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
+  --text-main: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+
+  /* Tipografías */
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-script: 'Caveat', cursive;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Escala tipográfica */
   --text-xs: 0.75rem;
@@ -47,10 +52,10 @@
   --space-8: 2rem;
 
   /* Sombras */
-  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px 0 rgba(0, 0, 0, 0.04);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08), 0 4px 6px -2px rgba(0, 0, 0, 0.04);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.65);
+  --shadow-gold: 0 6px 20px rgba(245, 166, 35, 0.35);
 
   /* Bordes */
   --radius-sm: 0.375rem;
@@ -69,7 +74,7 @@
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-body);
   background-color: var(--bg-outer);
   color: var(--text-main);
   min-height: 100vh;
@@ -92,7 +97,7 @@ button:active {
   max-width: 480px;
   min-height: 100vh;
   background-color: var(--bg-app);
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
   display: flex;
   flex-direction: column;
   position: relative;
@@ -100,8 +105,14 @@ button:active {
   border-right: 1px solid var(--border);
 }
 
-.serif-title {
-  font-family: 'Fraunces', serif;
+.display-title {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.script-title {
+  font-family: var(--font-script);
 }
 
 /* Transiciones y animaciones suaves */
@@ -111,7 +122,7 @@ button:active {
 }
 
 .fade-in {
-  animation: fadeIn 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeIn 0.24s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Scroll táctil horizontal para filtros */
@@ -135,50 +146,51 @@ button:active {
   }
 }
 
-/* Soporte completo de Temas Claro y Oscuro con Switch */
+/* Modo Oscuro (Predeterminado - Burger Factory Dark Charcoal) */
 html[data-theme="dark"],
 [data-theme="dark"] {
-  --bg-outer: #020617;
-  --bg-app: #0B0F19;
-  --surface: #151D2A;
-  --surface-warm: #1E293B;
-  --border: #243247;
-  --border-subtle: #151D2A;
-  --text-main: #F8FAFC;
-  --text-secondary: #CBD5E1;
-  --text-muted: #94A3B8;
-  --primary: #FF7A1A;
-  --primary-dark: #FF6B00;
-  --primary-light: #FFA05C;
-  --secondary: #334155;
+  --bg-outer: #050505;
+  --bg-app: #0D0D0D;
+  --surface: #141414;
+  --surface-warm: #1C1C1C;
+  --border: #242424;
+  --border-subtle: #181818;
+  --text-main: #FFFFFF;
+  --text-secondary: #9CA3AF;
+  --text-muted: #6B7280;
+  --primary: #F5A623;
+  --primary-dark: #D98207;
+  --primary-light: #FBECCB;
+  --secondary: #0D0D0D;
   --brand: var(--primary);
   --brand-hover: var(--primary-light);
-  --brand-soft: rgba(255, 122, 26, 0.22);
-  --amber-soft: rgba(245, 158, 11, 0.24);
+  --brand-soft: rgba(245, 166, 35, 0.16);
+  --amber-soft: rgba(245, 166, 35, 0.22);
   --success-soft: rgba(16, 185, 129, 0.22);
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.55);
   --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.65);
 }
 
+/* Modo Claro (Off-White & Pure White inspirado en Customer Favorites) */
 html[data-theme="light"],
 [data-theme="light"] {
-  --bg-outer: #0F172A;
-  --bg-app: #F8FAFC;
+  --bg-outer: #0D0D0D;
+  --bg-app: #F7F7F8;
   --surface: #FFFFFF;
   --surface-warm: #F1F5F9;
-  --border: #E2E8F0;
-  --border-subtle: #F8FAFC;
-  --text-main: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
-  --primary: #FF6B00;
-  --primary-dark: #E05300;
-  --primary-light: #FF9248;
-  --secondary: #0F172A;
+  --border: #E5E7EB;
+  --border-subtle: #F1F5F9;
+  --text-main: #0D0D0D;
+  --text-secondary: #4B5563;
+  --text-muted: #9CA3AF;
+  --primary: #D97706;
+  --primary-dark: #B45309;
+  --primary-light: #F5A623;
+  --secondary: #0D0D0D;
   --brand: var(--primary);
   --brand-hover: var(--primary-dark);
-  --brand-soft: rgba(255, 107, 0, 0.12);
+  --brand-soft: rgba(217, 119, 6, 0.12);
   --amber-soft: #FEF3C7;
   --success-soft: #D1FAE5;
   --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);

@@ -330,7 +330,7 @@ export default function App() {
       {/* Top Executive Navigation */}
       <header
         style={{
-          background: 'rgba(255, 255, 255, 0.94)',
+          background: 'rgba(13, 13, 13, 0.94)',
           backdropFilter: 'blur(14px)',
           borderBottom: '1px solid var(--border)',
           padding: '16px 32px',
@@ -353,22 +353,26 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div
               style={{
-                width: '44px',
-                height: '44px',
-                borderRadius: '12px',
-                background: 'linear-gradient(135deg, #D9381E, #EA580C)',
+                width: '42px',
+                height: '42px',
+                borderRadius: '10px',
+                background: 'var(--primary)',
                 display: 'flex',
+                flexDirection: 'column',
                 alignItems: 'center',
                 justifyContent: 'center',
-                fontSize: '1.4rem',
-                boxShadow: '0 6px 16px rgba(217, 56, 30, 0.25)'
+                gap: '3px',
+                padding: '7px',
+                boxShadow: 'var(--shadow-gold)'
               }}
             >
-              🍔
+              <div style={{ width: '22px', height: '6px', background: '#0D0D0D', borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}></div>
+              <div style={{ width: '20px', height: '3px', background: '#FFFFFF', borderRadius: '2px' }}></div>
+              <div style={{ width: '22px', height: '4px', background: '#0D0D0D', borderBottomLeftRadius: '3px', borderBottomRightRadius: '3px' }}></div>
             </div>
             <div>
-              <div className="serif-heading" style={{ fontSize: '1.3rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.1 }}>
-                Hamburger Rapid &bull; Admin Center
+              <div className="serif-heading" style={{ fontSize: '1.45rem', color: 'var(--text-main)', lineHeight: 1.1, letterSpacing: '0.04em' }}>
+                BURGER FACTORY &bull; ADMIN CENTER
               </div>
               <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600 }}>
                 Gestión de Catálogo, Inteligencia de Consumidores y Estado de Base de Datos
@@ -380,10 +384,10 @@ export default function App() {
             <button
               onClick={fetchDashboardData}
               style={{
-                background: 'var(--bg)',
+                background: 'var(--surface)',
                 border: '1px solid var(--border)',
-                padding: '9px 15px',
-                borderRadius: '999px',
+                padding: '9px 16px',
+                borderRadius: '8px',
                 fontSize: '0.82rem',
                 fontWeight: 700,
                 cursor: 'pointer',
@@ -399,7 +403,7 @@ export default function App() {
                 background: 'var(--surface)',
                 border: '1px solid var(--border)',
                 padding: '9px 16px',
-                borderRadius: '999px',
+                borderRadius: '8px',
                 fontSize: '0.82rem',
                 fontWeight: 700,
                 color: 'var(--text-main)'
@@ -411,13 +415,15 @@ export default function App() {
               href="/app"
               style={{
                 textDecoration: 'none',
-                background: 'var(--brand)',
-                color: '#FFFFFF',
+                background: 'var(--primary)',
+                color: '#0D0D0D',
                 padding: '9px 18px',
-                borderRadius: '999px',
+                borderRadius: '8px',
                 fontSize: '0.82rem',
-                fontWeight: 700,
-                boxShadow: '0 6px 16px rgba(217, 56, 30, 0.24)'
+                fontWeight: 800,
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em',
+                boxShadow: 'var(--shadow-gold)'
               }}
             >
               📱 Abrir App Móvil PWA
@@ -575,7 +581,7 @@ export default function App() {
         {/* SECTION 1: DATABASE STATUS & INFRASTRUCTURE HEALTH */}
         <section
           style={{
-            background: 'linear-gradient(135deg, #FFFDF9 0%, #F5EFE4 100%)',
+            background: 'linear-gradient(135deg, #181818 0%, #121212 100%)',
             border: '1px solid var(--border)',
             borderRadius: '24px',
             padding: '24px 28px',
@@ -588,7 +594,7 @@ export default function App() {
               <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--success)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 🗄️ Telemetría de Persistencia en Tiempo Real
               </span>
-              <h2 className="serif-heading" style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              <h2 className="serif-heading" style={{ fontSize: '1.75rem', color: 'var(--text-main)', letterSpacing: '0.04em' }}>
                 Estado de la Base de Datos y Nodo Backend
               </h2>
             </div>
@@ -600,7 +606,7 @@ export default function App() {
                   background: 'var(--surface)',
                   border: '1px solid var(--border)',
                   padding: '8px 14px',
-                  borderRadius: '10px',
+                  borderRadius: '8px',
                   fontSize: '0.8rem',
                   fontWeight: 700,
                   cursor: 'pointer',
@@ -615,12 +621,15 @@ export default function App() {
                 rel="noreferrer"
                 style={{
                   textDecoration: 'none',
-                  background: '#1C1917',
-                  color: '#FFFFFF',
-                  padding: '8px 14px',
-                  borderRadius: '10px',
+                  background: 'var(--primary)',
+                  color: '#0D0D0D',
+                  padding: '8px 16px',
+                  borderRadius: '8px',
                   fontSize: '0.8rem',
-                  fontWeight: 700
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  boxShadow: 'var(--shadow-gold)'
                 }}
               >
                 🩺 Ver JSON /api/health ↗
@@ -638,7 +647,7 @@ export default function App() {
             <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '14px', padding: '14px' }}>
               <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)' }}>MOTOR DE DATOS</div>
               <div style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--text-main)', marginTop: '4px' }}>
-                {serverHealth?.database?.engine || (serverHealth?.database?.mode === 'mysql' ? 'MySQL 8.0 InnoDB' : 'Hamburger Rapid In-Memory Store')}
+                {serverHealth?.database?.engine || (serverHealth?.database?.mode === 'mysql' ? 'MySQL 8.0 InnoDB' : 'Burger Factory In-Memory Store')}
               </div>
             </div>
             <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '14px', padding: '14px' }}>
@@ -655,7 +664,7 @@ export default function App() {
             </div>
             <div style={{ background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '14px', padding: '14px' }}>
               <div style={{ fontSize: '0.72rem', fontWeight: 700, color: 'var(--text-muted)' }}>COLECCIONES SINCRONIZADAS</div>
-              <div style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--success)', marginTop: '4px' }}>
+              <div style={{ fontSize: '0.96rem', fontWeight: 800, color: 'var(--primary)', marginTop: '4px' }}>
                 products ({burgers.length}) • customers ({customers.length})
               </div>
             </div>
@@ -678,7 +687,7 @@ export default function App() {
               <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 👥 Analítica de Clientes & Fidelización
               </span>
-              <h2 className="serif-heading" style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              <h2 className="serif-heading" style={{ fontSize: '1.8rem', color: 'var(--text-main)', letterSpacing: '0.04em' }}>
                 Métricas de Consumidores según Nivel de Consumo
               </h2>
               <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
@@ -693,12 +702,12 @@ export default function App() {
                   onClick={() => setSegmentFilter(seg)}
                   style={{
                     padding: '7px 14px',
-                    borderRadius: '999px',
-                    border: segmentFilter === seg ? '1px solid var(--brand)' : '1px solid var(--border)',
-                    background: segmentFilter === seg ? 'var(--brand)' : 'var(--bg)',
-                    color: segmentFilter === seg ? '#FFFFFF' : 'var(--text-secondary)',
+                    borderRadius: '8px',
+                    border: segmentFilter === seg ? '1px solid var(--primary)' : '1px solid var(--border)',
+                    background: segmentFilter === seg ? 'var(--primary)' : 'var(--bg)',
+                    color: segmentFilter === seg ? '#0D0D0D' : 'var(--text-secondary)',
                     fontSize: '0.78rem',
-                    fontWeight: 700,
+                    fontWeight: 800,
                     cursor: 'pointer'
                   }}
                 >
@@ -746,7 +755,7 @@ export default function App() {
                                 : 'var(--success-soft)',
                             color:
                               cust.consumptionSegment.includes('Alto')
-                                ? '#92400E'
+                                ? 'var(--primary)'
                                 : cust.consumptionSegment.includes('Frecuente')
                                 ? 'var(--purple)'
                                 : 'var(--success)'
@@ -765,7 +774,7 @@ export default function App() {
                         ${Number(cust.avgTicket).toFixed(2)}
                       </td>
                       <td style={{ padding: '14px 10px' }}>
-                        <span className="serif-heading" style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--brand)' }}>
+                        <span className="serif-heading" style={{ fontSize: '1.2rem', color: 'var(--primary)' }}>
                           ${Number(cust.totalSpent).toFixed(2)}
                         </span>
                       </td>
@@ -776,7 +785,7 @@ export default function App() {
                               style={{
                                 width: `${ratio}%`,
                                 height: '100%',
-                                background: 'linear-gradient(90deg, var(--brand), #F59E0B)',
+                                background: 'linear-gradient(90deg, #F5A623, #D98207)',
                                 borderRadius: '999px'
                               }}
                             />
@@ -809,7 +818,7 @@ export default function App() {
               <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase', letterSpacing: '0.06em' }}>
                 🍔 Inventario Comercial & Especialidades
               </span>
-              <h2 className="serif-heading" style={{ fontSize: '1.6rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              <h2 className="serif-heading" style={{ fontSize: '1.8rem', color: 'var(--text-main)', letterSpacing: '0.04em' }}>
                 Hamburguesas Disponibles en Plataforma ({filteredBurgers.length})
               </h2>
               <p style={{ fontSize: '0.88rem', color: 'var(--text-secondary)' }}>
@@ -823,13 +832,15 @@ export default function App() {
                   key={cat}
                   onClick={() => setCategoryFilter(cat)}
                   style={{
-                    padding: '8px 14px',
-                    borderRadius: '999px',
-                    border: categoryFilter === cat ? '1px solid var(--brand)' : '1px solid var(--border)',
-                    background: categoryFilter === cat ? 'var(--brand)' : 'var(--bg)',
-                    color: categoryFilter === cat ? '#FFFFFF' : 'var(--text-secondary)',
+                    padding: '8px 16px',
+                    borderRadius: '8px',
+                    border: categoryFilter === cat ? '1px solid var(--primary)' : '1px solid var(--border)',
+                    background: categoryFilter === cat ? 'var(--primary)' : 'var(--bg)',
+                    color: categoryFilter === cat ? '#0D0D0D' : 'var(--text-secondary)',
                     fontSize: '0.78rem',
-                    fontWeight: 700,
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.04em',
                     cursor: 'pointer'
                   }}
                 >
@@ -841,13 +852,16 @@ export default function App() {
                 onClick={() => setShowAddForm(!showAddForm)}
                 style={{
                   padding: '8px 16px',
-                  borderRadius: '999px',
+                  borderRadius: '8px',
                   border: 'none',
-                  background: '#1C1917',
-                  color: '#FFFFFF',
+                  background: showAddForm ? '#262626' : 'var(--primary)',
+                  color: showAddForm ? '#FFFFFF' : '#0D0D0D',
                   fontSize: '0.8rem',
-                  fontWeight: 700,
-                  cursor: 'pointer'
+                  fontWeight: 800,
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  cursor: 'pointer',
+                  boxShadow: showAddForm ? 'none' : 'var(--shadow-gold)'
                 }}
               >
                 {showAddForm ? '✕ Cancelar' : '+ Nueva Hamburguesa'}
@@ -860,7 +874,7 @@ export default function App() {
             <form
               onSubmit={handleCreateBurger}
               style={{
-                background: 'var(--bg)',
+                background: 'var(--surface-warm)',
                 border: '1px solid var(--border)',
                 borderRadius: '18px',
                 padding: '18px',
@@ -872,65 +886,68 @@ export default function App() {
               }}
             >
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px' }}>NOMBRE DE LA BURGER</label>
+                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px', color: 'var(--text-secondary)' }}>NOMBRE DE LA BURGER</label>
                 <input
                   type="text"
                   required
                   placeholder="Ej. Burger Real Triple"
                   value={newBurger.name}
                   onChange={e => setNewBurger({ ...newBurger, name: e.target.value })}
-                  style={{ width: '100%', padding: '9px 12px', borderRadius: '10px', border: '1px solid var(--border)' }}
+                  style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--text-main)' }}
                 />
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px' }}>CATEGORÍA</label>
+                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px', color: 'var(--text-secondary)' }}>CATEGORÍA</label>
                 <select
                   value={newBurger.category}
                   onChange={e => setNewBurger({ ...newBurger, category: e.target.value })}
-                  style={{ width: '100%', padding: '9px 12px', borderRadius: '10px', border: '1px solid var(--border)' }}
+                  style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--text-main)' }}
                 >
                   <option value="Especiales">Especiales</option>
                   <option value="Clásicas">Clásicas</option>
                 </select>
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px' }}>BADGE ESPECIALIDAD</label>
+                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px', color: 'var(--text-secondary)' }}>BADGE ESPECIALIDAD</label>
                 <input
                   type="text"
                   value={newBurger.badge}
                   onChange={e => setNewBurger({ ...newBurger, badge: e.target.value })}
-                  style={{ width: '100%', padding: '9px 12px', borderRadius: '10px', border: '1px solid var(--border)' }}
+                  style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--text-main)' }}
                 />
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px' }}>PRECIO ($)</label>
+                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px', color: 'var(--text-secondary)' }}>PRECIO ($)</label>
                 <input
                   type="number"
                   step="0.10"
                   value={newBurger.price}
                   onChange={e => setNewBurger({ ...newBurger, price: e.target.value })}
-                  style={{ width: '100%', padding: '9px 12px', borderRadius: '10px', border: '1px solid var(--border)' }}
+                  style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--text-main)' }}
                 />
               </div>
               <div>
-                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px' }}>STOCK</label>
+                <label style={{ display: 'block', fontSize: '0.72rem', fontWeight: 700, marginBottom: '4px', color: 'var(--text-secondary)' }}>STOCK</label>
                 <input
                   type="number"
                   value={newBurger.stock}
                   onChange={e => setNewBurger({ ...newBurger, stock: e.target.value })}
-                  style={{ width: '100%', padding: '9px 12px', borderRadius: '10px', border: '1px solid var(--border)' }}
+                  style={{ width: '100%', padding: '9px 12px', borderRadius: '8px', border: '1px solid var(--border)', background: 'var(--surface)', color: 'var(--text-main)' }}
                 />
               </div>
               <button
                 type="submit"
                 style={{
-                  background: 'var(--brand)',
-                  color: '#FFFFFF',
+                  background: 'var(--primary)',
+                  color: '#0D0D0D',
                   border: 'none',
                   padding: '10px 16px',
-                  borderRadius: '10px',
+                  borderRadius: '8px',
                   fontWeight: 800,
-                  cursor: 'pointer'
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.04em',
+                  cursor: 'pointer',
+                  boxShadow: 'var(--shadow-gold)'
                 }}
               >
                 Guardar en BD
@@ -978,9 +995,9 @@ export default function App() {
                         fontSize: '0.66rem',
                         fontWeight: 800,
                         padding: '2px 8px',
-                        borderRadius: '999px',
+                        borderRadius: '6px',
                         background: burger.category === 'Especiales' ? 'var(--amber-soft)' : 'var(--success-soft)',
-                        color: burger.category === 'Especiales' ? '#92400E' : 'var(--success)'
+                        color: burger.category === 'Especiales' ? '#F5A623' : 'var(--success)'
                       }}
                     >
                       {burger.badge || burger.category}
@@ -990,13 +1007,13 @@ export default function App() {
                     </span>
                   </div>
 
-                  <div className="serif-heading" style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+                  <div className="serif-heading" style={{ fontSize: '1.25rem', color: 'var(--text-main)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', letterSpacing: '0.04em' }}>
                     {burger.name}
                   </div>
 
                   <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: '8px' }}>
                     <div>
-                      <span className="serif-heading" style={{ fontSize: '1.1rem', fontWeight: 800, color: 'var(--brand)' }}>
+                      <span className="serif-heading" style={{ fontSize: '1.35rem', color: 'var(--primary)' }}>
                         ${Number(burger.price).toFixed(2)}
                       </span>
                       <span style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', marginLeft: '8px' }}>

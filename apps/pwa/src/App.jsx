@@ -385,25 +385,29 @@ export default function App() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
           <div
             style={{
-              width: '38px',
-              height: '38px',
+              width: '40px',
+              height: '40px',
               borderRadius: '11px',
-              background: 'linear-gradient(135deg, var(--primary) 0%, #EA580C 100%)',
+              background: '#181818',
+              border: '1px solid #2B2B2B',
               display: 'flex',
+              flexDirection: 'column',
               alignItems: 'center',
               justifyContent: 'center',
-              fontSize: '1.2rem',
-              boxShadow: '0 4px 12px rgba(232, 119, 34, 0.3)'
+              gap: '2px',
+              boxShadow: 'var(--shadow-gold)'
             }}
           >
-            🍔
+            <div style={{ width: '22px', height: '7px', background: 'var(--primary)', borderTopLeftRadius: '8px', borderTopRightRadius: '8px' }}></div>
+            <div style={{ width: '20px', height: '3px', background: '#FFFFFF', borderRadius: '2px' }}></div>
+            <div style={{ width: '22px', height: '4px', background: 'var(--primary)', borderBottomLeftRadius: '4px', borderBottomRightRadius: '4px' }}></div>
           </div>
           <div>
-            <div className="serif-title" style={{ fontSize: '1.08rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.1 }}>
-              Hamburger Rapid
+            <div className="display-title" style={{ fontSize: '1.25rem', color: 'var(--text-main)', lineHeight: 1 }}>
+              BURGER FACTORY
             </div>
-            <div style={{ fontSize: '0.7rem', color: 'var(--text-muted)', fontWeight: 600 }}>
-              📍 {profile.address.slice(0, 26)}...
+            <div style={{ fontSize: '0.62rem', letterSpacing: '0.12em', color: 'var(--primary)', fontWeight: 800 }}>
+              • EST. 2016 • HAMBURGER RAPID
             </div>
           </div>
         </div>
@@ -498,7 +502,7 @@ export default function App() {
                 <span style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: theme === 'dark' ? '#FBBF24' : '#92400E', letterSpacing: '0.05em' }}>
                   👑 Especialidad de la Casa
                 </span>
-                <div className="serif-title" style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)' }}>
+                <div className="display-title" style={{ fontSize: '1.2rem', color: 'var(--text-main)' }}>
                   Prueba el Rey de las Burgers
                 </div>
                 <div style={{ fontSize: '0.76rem', color: 'var(--text-secondary)' }}>
@@ -602,11 +606,11 @@ export default function App() {
                         >
                           {burger.badge || `⭐ Nivel ${burger.category}`}
                         </span>
-                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '6px' }}>
-                          <h3 className="serif-title" style={{ fontSize: '1rem', fontWeight: 800, color: 'var(--text-main)', lineHeight: 1.2 }}>
+                        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: '6px' }}>
+                          <h3 className="display-title" style={{ fontSize: '1.25rem', color: 'var(--text-main)', lineHeight: 1 }}>
                             {burger.name}
                           </h3>
-                          <span className="serif-title" style={{ fontSize: '1.08rem', fontWeight: 800, color: 'var(--primary)' }}>
+                          <span className="display-title" style={{ fontSize: '1.35rem', color: 'var(--primary)', letterSpacing: '0.02em' }}>
                             ${Number(burger.price).toFixed(2)}
                           </span>
                         </div>
@@ -624,15 +628,17 @@ export default function App() {
                           <button
                             onClick={() => updateCartItem(burger, 1)}
                             style={{
-                              background: 'linear-gradient(135deg, var(--primary) 0%, #EA580C 100%)',
-                              color: '#FFFFFF',
+                              background: 'var(--primary)',
+                              color: '#0D0D0D',
                               border: 'none',
-                              borderRadius: '12px',
-                              padding: '7px 15px',
-                              fontSize: '0.8rem',
-                              fontWeight: 700,
+                              borderRadius: '8px',
+                              padding: '7px 16px',
+                              fontSize: '0.78rem',
+                              fontWeight: 800,
+                              textTransform: 'uppercase',
+                              letterSpacing: '0.04em',
                               cursor: 'pointer',
-                              boxShadow: '0 4px 12px rgba(232, 119, 34, 0.35)',
+                              boxShadow: 'var(--shadow-gold)',
                               transition: 'all 0.2s ease'
                             }}
                           >
@@ -645,7 +651,7 @@ export default function App() {
                               alignItems: 'center',
                               gap: '10px',
                               background: 'var(--brand-soft)',
-                              border: '1px solid #FECACA',
+                              border: '1px solid var(--border)',
                               borderRadius: '12px',
                               padding: '4px 10px'
                             }}
@@ -694,22 +700,23 @@ export default function App() {
                   position: 'sticky',
                   bottom: '12px',
                   marginTop: '20px',
-                  background: 'var(--secondary)',
-                  color: '#FFFFFF',
+                  background: 'var(--primary)',
+                  color: '#0D0D0D',
                   padding: '14px 20px',
-                  borderRadius: '18px',
+                  borderRadius: '16px',
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'center',
                   cursor: 'pointer',
-                  boxShadow: '0 12px 28px rgba(43, 45, 66, 0.35)',
-                  border: '1px solid rgba(255, 255, 255, 0.12)'
+                  boxShadow: 'var(--shadow-gold)',
+                  border: '1px solid var(--primary-dark)'
                 }}
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                   <span
                     style={{
-                      background: 'var(--primary)',
+                      background: '#0D0D0D',
+                      color: 'var(--primary)',
                       padding: '4px 10px',
                       borderRadius: '999px',
                       fontSize: '0.78rem',
@@ -718,9 +725,9 @@ export default function App() {
                   >
                     {cartCount} {cartCount === 1 ? 'ítem' : 'ítems'}
                   </span>
-                  <span style={{ fontSize: '0.86rem', fontWeight: 700 }}>Ir a Simular Compra</span>
+                  <span style={{ fontSize: '0.86rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.04em' }}>Ir a Simular Compra</span>
                 </div>
-                <span className="serif-title" style={{ fontSize: '1.08rem', fontWeight: 800, color: 'var(--accent)' }}>
+                <span className="display-title" style={{ fontSize: '1.3rem', color: '#0D0D0D' }}>
                   ${finalTotal.toFixed(2)} ➔
                 </span>
               </div>
@@ -735,7 +742,7 @@ export default function App() {
               <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase' }}>
                 🎁 Beneficios Exclusivos App
               </span>
-              <h2 className="serif-title" style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              <h2 className="display-title" style={{ fontSize: '1.75rem', color: 'var(--text-main)', letterSpacing: '0.04em' }}>
                 Ofertas & Combos Reales
               </h2>
               <p style={{ fontSize: '0.84rem', color: 'var(--text-secondary)' }}>
@@ -751,7 +758,7 @@ export default function App() {
                     key={offer.id}
                     style={{
                       background: 'var(--surface)',
-                      border: isActive ? '2px solid var(--brand)' : '1px solid var(--border)',
+                      border: isActive ? '2px solid var(--primary)' : '1px solid var(--border)',
                       borderRadius: '20px',
                       padding: '16px',
                       boxShadow: 'var(--shadow-sm)'
@@ -761,7 +768,7 @@ export default function App() {
                       <span
                         style={{
                           background: 'var(--amber-soft)',
-                          color: '#92400E',
+                          color: '#F5A623',
                           fontSize: '0.7rem',
                           fontWeight: 800,
                           padding: '3px 9px',
@@ -779,14 +786,14 @@ export default function App() {
                           border: '1px dashed var(--border)',
                           padding: '3px 8px',
                           borderRadius: '6px',
-                          color: 'var(--brand)'
+                          color: 'var(--primary)'
                         }}
                       >
                         CÓDIGO: {offer.code}
                       </span>
                     </div>
 
-                    <h3 className="serif-title" style={{ fontSize: '1.15rem', fontWeight: 800, color: 'var(--text-main)', marginBottom: '4px' }}>
+                    <h3 className="display-title" style={{ fontSize: '1.35rem', color: 'var(--text-main)', marginBottom: '4px' }}>
                       {offer.title}
                     </h3>
                     <p style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', marginBottom: '12px' }}>
@@ -799,7 +806,7 @@ export default function App() {
                           <span style={{ fontSize: '0.78rem', textDecoration: 'line-through', color: 'var(--text-muted)', marginRight: '8px' }}>
                             ${offer.originalPrice.toFixed(2)}
                           </span>
-                          <span className="serif-title" style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--brand)' }}>
+                          <span className="display-title" style={{ fontSize: '1.4rem', color: 'var(--primary)' }}>
                             ${offer.offerPrice.toFixed(2)}
                           </span>
                         </div>
@@ -812,14 +819,17 @@ export default function App() {
                       <button
                         onClick={() => handleApplyOffer(offer)}
                         style={{
-                          background: isActive ? 'var(--success)' : 'var(--brand)',
-                          color: '#FFFFFF',
+                          background: isActive ? 'var(--success)' : 'var(--primary)',
+                          color: isActive ? '#FFFFFF' : '#0D0D0D',
                           border: 'none',
-                          borderRadius: '12px',
-                          padding: '9px 16px',
-                          fontSize: '0.8rem',
-                          fontWeight: 700,
-                          cursor: 'pointer'
+                          borderRadius: '8px',
+                          padding: '8px 16px',
+                          fontSize: '0.78rem',
+                          fontWeight: 800,
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.04em',
+                          cursor: 'pointer',
+                          boxShadow: isActive ? 'none' : 'var(--shadow-gold)'
                         }}
                       >
                         {isActive ? '✓ Aplicada' : 'Aplicar Oferta'}
@@ -836,10 +846,10 @@ export default function App() {
         {activeTab === 'ordenes' && (
           <div>
             <div style={{ marginBottom: '14px' }}>
-              <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--brand)', textTransform: 'uppercase' }}>
+              <span style={{ fontSize: '0.74rem', fontWeight: 800, color: 'var(--primary)', textTransform: 'uppercase' }}>
                 🛒 Checkout & Rastreo en Vivo
               </span>
-              <h2 className="serif-title" style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--text-main)' }}>
+              <h2 className="display-title" style={{ fontSize: '1.75rem', color: 'var(--text-main)', letterSpacing: '0.04em' }}>
                 Simulador de Compra y Órdenes
               </h2>
             </div>
@@ -856,7 +866,7 @@ export default function App() {
               }}
             >
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
-                <h3 className="serif-title" style={{ fontSize: '1.08rem', fontWeight: 800 }}>
+                <h3 className="display-title" style={{ fontSize: '1.25rem', color: 'var(--text-main)' }}>
                   Tu Bandeja Actual ({cartCount})
                 </h3>
                 {cart.length > 0 && (
@@ -885,14 +895,17 @@ export default function App() {
                   <button
                     onClick={() => setActiveTab('menu')}
                     style={{
-                      background: 'var(--brand)',
-                      color: '#FFFFFF',
+                      background: 'var(--primary)',
+                      color: '#0D0D0D',
                       border: 'none',
                       padding: '9px 18px',
-                      borderRadius: '10px',
-                      fontWeight: 700,
+                      borderRadius: '8px',
+                      fontWeight: 800,
                       fontSize: '0.82rem',
-                      cursor: 'pointer'
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
+                      cursor: 'pointer',
+                      boxShadow: 'var(--shadow-gold)'
                     }}
                   >
                     Explorar Menú de 10 Variantes
@@ -935,19 +948,19 @@ export default function App() {
                           >
                             <button
                               onClick={() => updateCartItem(item, -1)}
-                              style={{ border: 'none', background: 'transparent', fontWeight: 800, cursor: 'pointer' }}
+                              style={{ border: 'none', background: 'transparent', fontWeight: 800, cursor: 'pointer', color: 'var(--text-main)' }}
                             >
                               −
                             </button>
                             <span style={{ fontSize: '0.8rem', fontWeight: 800 }}>{item.qty}</span>
                             <button
                               onClick={() => updateCartItem(item, 1)}
-                              style={{ border: 'none', background: 'transparent', fontWeight: 800, cursor: 'pointer' }}
+                              style={{ border: 'none', background: 'transparent', fontWeight: 800, cursor: 'pointer', color: 'var(--text-main)' }}
                             >
                               +
                             </button>
                           </div>
-                          <span style={{ fontSize: '0.88rem', fontWeight: 800, minWidth: '52px', textAlign: 'right' }}>
+                          <span style={{ fontSize: '0.88rem', fontWeight: 800, minWidth: '52px', textAlign: 'right', color: 'var(--primary)' }}>
                             ${(item.price * item.qty).toFixed(2)}
                           </span>
                         </div>
@@ -963,7 +976,7 @@ export default function App() {
                       style={{
                         padding: '8px',
                         borderRadius: '10px',
-                        border: deliveryMode === 'express' ? '1.5px solid var(--brand)' : '1px solid var(--border)',
+                        border: deliveryMode === 'express' ? '1.5px solid var(--primary)' : '1px solid var(--border)',
                         background: deliveryMode === 'express' ? 'var(--brand-soft)' : 'var(--bg-app)',
                         color: 'var(--text-main)',
                         fontSize: '0.76rem',
@@ -979,7 +992,7 @@ export default function App() {
                       style={{
                         padding: '8px',
                         borderRadius: '10px',
-                        border: deliveryMode === 'pickup' ? '1.5px solid var(--brand)' : '1px solid var(--border)',
+                        border: deliveryMode === 'pickup' ? '1.5px solid var(--primary)' : '1px solid var(--border)',
                         background: deliveryMode === 'pickup' ? 'var(--brand-soft)' : 'var(--bg-app)',
                         color: 'var(--text-main)',
                         fontSize: '0.76rem',
@@ -1046,12 +1059,11 @@ export default function App() {
                         justifyContent: 'space-between',
                         borderTop: '1px solid var(--border)',
                         paddingTop: '6px',
-                        fontSize: '0.96rem',
-                        fontWeight: 800
+                        alignItems: 'baseline'
                       }}
                     >
-                      <span>Total a Pagar</span>
-                      <span style={{ color: 'var(--brand)' }}>${finalTotal.toFixed(2)}</span>
+                      <span style={{ fontWeight: 800 }}>Total a Pagar</span>
+                      <span className="display-title" style={{ color: 'var(--primary)', fontSize: '1.35rem' }}>${finalTotal.toFixed(2)}</span>
                     </div>
                   </div>
 
@@ -1060,14 +1072,16 @@ export default function App() {
                     style={{
                       width: '100%',
                       padding: '13px',
-                      borderRadius: '14px',
+                      borderRadius: '10px',
                       border: 'none',
-                      background: 'linear-gradient(135deg, var(--brand) 0%, #EA580C 100%)',
-                      color: '#FFFFFF',
+                      background: 'linear-gradient(135deg, #F5A623 0%, #D98207 100%)',
+                      color: '#0D0D0D',
                       fontWeight: 800,
                       fontSize: '0.92rem',
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.04em',
                       cursor: 'pointer',
-                      boxShadow: '0 8px 20px rgba(217, 56, 30, 0.28)'
+                      boxShadow: 'var(--shadow-gold)'
                     }}
                   >
                     ✅ Confirmar y Simular Compra (${finalTotal.toFixed(2)})
@@ -1077,7 +1091,7 @@ export default function App() {
             </div>
 
             {/* Active & Past Orders List */}
-            <h3 className="serif-title" style={{ fontSize: '1.15rem', fontWeight: 800, marginBottom: '10px' }}>
+            <h3 className="display-title" style={{ fontSize: '1.35rem', color: 'var(--text-main)', marginBottom: '10px', letterSpacing: '0.04em' }}>
               Historial y Rastreo de Órdenes ({orders.length})
             </h3>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
@@ -1106,7 +1120,7 @@ export default function App() {
                           padding: '3px 9px',
                           borderRadius: '999px',
                           background: isCompleted ? 'var(--success-soft)' : 'var(--amber-soft)',
-                          color: isCompleted ? 'var(--success)' : '#92400E'
+                          color: isCompleted ? 'var(--success)' : '#F5A623'
                         }}
                       >
                         {currentStep}
@@ -1139,14 +1153,14 @@ export default function App() {
                         style={{
                           width: `${((order.statusIndex + 1) / ORDER_STEPS.length) * 100}%`,
                           height: '100%',
-                          background: isCompleted ? 'var(--success)' : 'var(--brand)',
+                          background: isCompleted ? 'var(--success)' : 'var(--primary)',
                           transition: 'width 0.3s ease'
                         }}
                       />
                     </div>
 
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <span className="serif-title" style={{ fontWeight: 800, fontSize: '0.96rem', color: 'var(--text-main)' }}>
+                      <span className="display-title" style={{ fontSize: '1.15rem', color: 'var(--primary)' }}>
                         Total: ${Number(order.total).toFixed(2)}
                       </span>
                       {!isCompleted && (
@@ -1180,8 +1194,9 @@ export default function App() {
             {/* Loyalty Card */}
             <div
               style={{
-                background: 'linear-gradient(135deg, #1C1917 0%, #3F3A36 100%)',
+                background: 'linear-gradient(135deg, #1C1917 0%, #0D0D0D 100%)',
                 color: '#FAF7F2',
+                border: '1px solid var(--border)',
                 borderRadius: '22px',
                 padding: '20px',
                 marginBottom: '18px',
@@ -1191,8 +1206,8 @@ export default function App() {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '12px' }}>
                 <span
                   style={{
-                    background: 'rgba(251, 191, 36, 0.2)',
-                    color: '#FBBF24',
+                    background: 'rgba(245, 166, 35, 0.2)',
+                    color: '#F5A623',
                     padding: '4px 10px',
                     borderRadius: '999px',
                     fontSize: '0.72rem',
@@ -1204,7 +1219,7 @@ export default function App() {
                 <span style={{ fontSize: '0.78rem', color: '#D6D3D1' }}>ID #HR-8821</span>
               </div>
 
-              <div className="serif-title" style={{ fontSize: '1.35rem', fontWeight: 800, marginBottom: '2px' }}>
+              <div className="display-title" style={{ fontSize: '1.5rem', marginBottom: '2px', letterSpacing: '0.04em' }}>
                 {profile.name}
               </div>
               <div style={{ fontSize: '0.8rem', color: '#A8A29E', marginBottom: '16px' }}>
@@ -1213,7 +1228,8 @@ export default function App() {
 
               <div
                 style={{
-                  background: 'rgba(255,255,255,0.08)',
+                  background: 'rgba(255,255,255,0.06)',
+                  border: '1px solid rgba(255,255,255,0.1)',
                   borderRadius: '14px',
                   padding: '12px 14px',
                   display: 'flex',
@@ -1223,20 +1239,22 @@ export default function App() {
               >
                 <div>
                   <div style={{ fontSize: '0.7rem', color: '#D6D3D1', textTransform: 'uppercase' }}>RapidPoints Acumulados</div>
-                  <div className="serif-title" style={{ fontSize: '1.4rem', fontWeight: 800, color: '#FBBF24' }}>
+                  <div className="display-title" style={{ fontSize: '1.6rem', color: '#F5A623' }}>
                     {profile.points} pts
                   </div>
                 </div>
                 <button
                   onClick={() => setActiveTab('ofertas')}
                   style={{
-                    background: '#FBBF24',
-                    color: '#1C1917',
+                    background: '#F5A623',
+                    color: '#0D0D0D',
                     border: 'none',
-                    borderRadius: '10px',
-                    padding: '7px 12px',
+                    borderRadius: '8px',
+                    padding: '7px 14px',
                     fontSize: '0.76rem',
                     fontWeight: 800,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.04em',
                     cursor: 'pointer'
                   }}
                 >
@@ -1256,7 +1274,7 @@ export default function App() {
                 boxShadow: 'var(--shadow-sm)'
               }}
             >
-              <h3 className="serif-title" style={{ fontSize: '1.05rem', fontWeight: 800, marginBottom: '12px' }}>
+              <h3 className="display-title" style={{ fontSize: '1.25rem', marginBottom: '12px', letterSpacing: '0.04em' }}>
                 Datos de Entrega & Consumidor
               </h3>
 
@@ -1274,7 +1292,8 @@ export default function App() {
                     borderRadius: '10px',
                     border: '1px solid var(--border)',
                     background: 'var(--bg-app)',
-                    fontSize: '0.84rem'
+                    fontSize: '0.84rem',
+                    color: 'var(--text-main)'
                   }}
                 />
               </div>
@@ -1293,7 +1312,8 @@ export default function App() {
                     borderRadius: '10px',
                     border: '1px solid var(--border)',
                     background: 'var(--bg-app)',
-                    fontSize: '0.84rem'
+                    fontSize: '0.84rem',
+                    color: 'var(--text-main)'
                   }}
                 />
               </div>
@@ -1319,16 +1339,19 @@ export default function App() {
                     setDeferredPrompt(null);
                   }}
                   style={{
-                    background: 'var(--brand)',
-                    color: '#FFFFFF',
+                    background: 'var(--primary)',
+                    color: '#0D0D0D',
                     border: 'none',
                     padding: '11px',
-                    borderRadius: '12px',
-                    fontWeight: 700,
-                    cursor: 'pointer'
+                    borderRadius: '8px',
+                    fontWeight: 800,
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.04em',
+                    cursor: 'pointer',
+                    boxShadow: 'var(--shadow-gold)'
                   }}
                 >
-                  📲 Instalar App Hamburger Rapid
+                  📲 Instalar App Burger Factory
                 </button>
               )}
               <a
@@ -1347,7 +1370,7 @@ export default function App() {
                 }}
               >
                 <span>🌐 Volver a Landing E-commerce</span>
-                <span>➔</span>
+                <span style={{ color: 'var(--primary)' }}>➔</span>
               </a>
               <a
                 href="/admin"
@@ -1365,7 +1388,7 @@ export default function App() {
                 }}
               >
                 <span>📊 Abrir Panel Admin de Métricas</span>
-                <span>➔</span>
+                <span style={{ color: 'var(--primary)' }}>➔</span>
               </a>
             </div>
           </div>
