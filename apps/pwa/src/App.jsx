@@ -178,6 +178,16 @@ export default function App() {
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [deferredPrompt, setDeferredPrompt] = useState(null);
 
+  // Modo Dual: Estado de tema ('dark' por defecto para impacto visual, configurable con 1 clic)
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('hamburger_theme') || 'dark';
+  });
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('hamburger_theme', theme);
+  }, [theme]);
+
   // User profile state
   const [profile, setProfile] = useState({
     name: 'Valentina Morales',
@@ -399,6 +409,28 @@ export default function App() {
         </div>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <button
+            onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}
+            title="Alternar Modo Claro / Oscuro"
+            aria-label="Alternar Modo Claro / Oscuro"
+            style={{
+              border: '1px solid var(--border)',
+              background: 'var(--surface-warm)',
+              color: 'var(--text-main)',
+              padding: '5px 11px',
+              borderRadius: '999px',
+              fontSize: '0.74rem',
+              fontWeight: 800,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px',
+              boxShadow: 'var(--shadow-sm)'
+            }}
+          >
+            {theme === 'dark' ? '☀️ Claro' : '🌙 Oscuro'}
+          </button>
+
           <span
             style={{
               fontSize: '0.7rem',
@@ -448,8 +480,10 @@ export default function App() {
             <div
               onClick={() => setActiveTab('ofertas')}
               style={{
-                background: 'linear-gradient(135deg, #FFFDF9 0%, #FEF3C7 100%)',
-                border: '1px solid #FDE68A',
+                background: theme === 'dark'
+                  ? 'linear-gradient(135deg, #1E293B 0%, #311E0C 100%)'
+                  : 'linear-gradient(135deg, #FFFFFF 0%, #FEF3C7 100%)',
+                border: theme === 'dark' ? '1px solid #78350F' : '1px solid #FDE68A',
                 borderRadius: '18px',
                 padding: '14px 16px',
                 marginBottom: '16px',
@@ -461,7 +495,7 @@ export default function App() {
               }}
             >
               <div>
-                <span style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: '#92400E', letterSpacing: '0.05em' }}>
+                <span style={{ fontSize: '0.68rem', fontWeight: 800, textTransform: 'uppercase', color: theme === 'dark' ? '#FBBF24' : '#92400E', letterSpacing: '0.05em' }}>
                   👑 Especialidad de la Casa
                 </span>
                 <div className="serif-title" style={{ fontSize: '1.05rem', fontWeight: 800, color: 'var(--text-main)' }}>

@@ -1,32 +1,32 @@
 :root {
-  /* Paleta de colores del Sistema de Diseño */
-  --primary: #E87722;
-  --primary-dark: #C96418;
-  --primary-light: #F4A261;
-  --secondary: #2B2D42;
+  /* Paleta de colores - Gourmet Flame & Slate */
+  --primary: #FF6B00;
+  --primary-dark: #E05300;
+  --primary-light: #FF9248;
+  --secondary: #0F172A;
   --accent: #FFD166;
-  --success: #06D6A0;
-  --danger: #EF476F;
+  --success: #10B981;
+  --danger: #EF4444;
 
   /* Aliases compatibles */
   --brand: var(--primary);
   --brand-hover: var(--primary-dark);
-  --brand-soft: rgba(232, 119, 34, 0.12);
-  --amber: #D97706;
+  --brand-soft: rgba(255, 107, 0, 0.12);
+  --amber: #F59E0B;
   --amber-soft: #FEF3C7;
-  --success-soft: #DCFCE7;
+  --success-soft: #D1FAE5;
 
-  /* Fondos y superficies */
-  --bg-outer: #EFEAE1;
-  --bg-app: #FAF7F2;
+  /* Fondos y superficies (Modo Claro - Crisp Slate & Pearl) */
+  --bg-outer: #0F172A;
+  --bg-app: #F8FAFC;
   --surface: #FFFFFF;
-  --surface-warm: #FDFBF7;
+  --surface-warm: #F1F5F9;
   --border: #E2E8F0;
-  --border-subtle: #F1F5F9;
+  --border-subtle: #F8FAFC;
 
   /* Colores de texto */
-  --text-main: #1E293B;
-  --text-secondary: #64748B;
+  --text-main: #0F172A;
+  --text-secondary: #475569;
   --text-muted: #94A3B8;
 
   /* Escala tipográfica */
@@ -135,29 +135,66 @@ button:active {
   }
 }
 
-/* Soporte para modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-outer: #090D16;
-    --bg-app: #0F172A;
-    --surface: #1E293B;
-    --surface-warm: #1E293B;
-    --border: #334155;
-    --border-subtle: #1E293B;
-    --text-main: #F8FAFC;
-    --text-secondary: #94A3B8;
-    --text-muted: #64748B;
-    --amber-soft: rgba(245, 158, 11, 0.2);
-    --success-soft: rgba(6, 214, 160, 0.2);
-    --brand-soft: rgba(232, 119, 34, 0.2);
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.3);
-    --shadow-md: 0 4px 6px rgba(0,0,0,0.4);
-  }
+/* Soporte completo de Temas Claro y Oscuro con Switch */
+html[data-theme="dark"],
+[data-theme="dark"] {
+  --bg-outer: #020617;
+  --bg-app: #0B0F19;
+  --surface: #151D2A;
+  --surface-warm: #1E293B;
+  --border: #243247;
+  --border-subtle: #151D2A;
+  --text-main: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+  --primary: #FF7A1A;
+  --primary-dark: #FF6B00;
+  --primary-light: #FFA05C;
+  --secondary: #334155;
+  --brand: var(--primary);
+  --brand-hover: var(--primary-light);
+  --brand-soft: rgba(255, 122, 26, 0.22);
+  --amber-soft: rgba(245, 158, 11, 0.24);
+  --success-soft: rgba(16, 185, 129, 0.22);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.65);
+}
 
-  body {
-    background: var(--bg-outer);
-    color: var(--text-main);
-  }
+html[data-theme="light"],
+[data-theme="light"] {
+  --bg-outer: #0F172A;
+  --bg-app: #F8FAFC;
+  --surface: #FFFFFF;
+  --surface-warm: #F1F5F9;
+  --border: #E2E8F0;
+  --border-subtle: #F8FAFC;
+  --text-main: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #94A3B8;
+  --primary: #FF6B00;
+  --primary-dark: #E05300;
+  --primary-light: #FF9248;
+  --secondary: #0F172A;
+  --brand: var(--primary);
+  --brand-hover: var(--primary-dark);
+  --brand-soft: rgba(255, 107, 0, 0.12);
+  --amber-soft: #FEF3C7;
+  --success-soft: #D1FAE5;
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+/* Transición suave al alternar modo */
+body, #root, header, nav, input, select, button {
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+[data-theme="dark"] input,
+[data-theme="dark"] select,
+[data-theme="dark"] textarea {
+  color-scheme: dark;
 }
 
 /* Accesibilidad y reducción de movimiento */
