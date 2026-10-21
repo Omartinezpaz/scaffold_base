@@ -101,6 +101,71 @@ router.post('/orders', (req, res) => {
   }
 });
 
+// Sync order to iDempiere ERP
+router.post('/orders/:id/sync', (req, res) => {
+  try {
+    const { id } = req.params;
+    const { docNo } = req.body || {};
+    const updated = db.syncOrderToIdempiere(id, docNo);
+    if (!updated) {
+      return res.status(404).json({ success: false, error: 'Orden no encontrada' });
+    }
+    res.json({
+      success: true,
+      message: `Orden ${id} sincronizada en iDempiere ERP con documento ${updated.idempiereSync.docNo}`,
+      data: updated
+    });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
+
+// Proxy for iDempiere REST API (CORS bypass)
+router.post('/idempiere-proxy', async (req, res) => {
+  try {
+    const { targetUrl, method = 'POST', headers = {}, body } = req.body;
+    if (!targetUrl) {
+      return res.status(400).json({ success: false, error: 'targetUrl es requerido' });
+    }
+
+    const fetchOptions = {
+      method: method.toUpperCase(),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        ...headers
+      }
+    };
+
+    if (body && ['POST', 'PUT', 'PATCH'].includes(fetchOptions.method)) {
+      fetchOptions.body = typeof body === 'string' ? body : JSON.stringify(body);
+    }
+
+    const idempiereRes = await fetch(targetUrl, fetchOptions);
+    const contentType = idempiereRes.headers.get('content-type') || '';
+    
+    let responseData;
+    if (contentType.includes('application/json')) {
+      responseData = await idempiereRes.json();
+    } else {
+      const text = await idempiereRes.text();
+      try {
+        responseData = JSON.parse(text);
+      } catch {
+        responseData = { rawResponse: text };
+      }
+    }
+
+    res.status(idempiereRes.status).json(responseData);
+  } catch (error) {
+    console.error('Error en /api/idempiere-proxy:', error.message);
+    res.status(502).json({
+      success: false,
+      error: `Error de conexión hacia iDempiere: ${error.message}`
+    });
+  }
+});
+
 // Reset initial catalog
 router.post('/reset', async (req, res) => {
   try {

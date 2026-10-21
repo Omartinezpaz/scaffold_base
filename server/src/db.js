@@ -242,20 +242,117 @@ let inMemoryProducts = [...INITIAL_PRODUCTS];
 let inMemoryCustomers = [...INITIAL_CUSTOMERS];
 let inMemoryOrders = [
   {
-    id: 'ORD-9042',
+    id: 'ORD-9045',
+    customerName: 'Distribuidora Central Gourmet',
+    channel: 'PWA Preventa',
+    origin: 'PWA Preventa',
+    seller: 'Carlos Mendoza (Preventista #04)',
+    items: [
+      { name: 'Rey de las Burgers', qty: 6, price: 14.90 },
+      { name: 'Burger Real Doble', qty: 4, price: 12.90 }
+    ],
+    total: 141.00,
+    status: 'Pendiente de Aprobación',
+    createdAt: new Date(Date.now() - 1000 * 60 * 8).toISOString(),
+    idempiereSync: {
+      synced: false,
+      docNo: null,
+      syncDate: null
+    }
+  },
+  {
+    id: 'ORD-9044',
     customerName: 'Valentina Morales',
-    items: [{ name: 'Rey de las Burgers', qty: 2, price: 14.90 }, { name: 'Burger Real Clásica', qty: 1, price: 9.90 }],
+    channel: 'E-commerce',
+    origin: 'E-commerce',
+    seller: 'Portal Web Directo',
+    items: [
+      { name: 'Rey de las Burgers', qty: 2, price: 14.90 },
+      { name: 'Burger Real Clásica', qty: 1, price: 9.90 }
+    ],
     total: 39.70,
     status: 'En preparación',
-    createdAt: new Date(Date.now() - 1000 * 60 * 14).toISOString()
+    createdAt: new Date(Date.now() - 1000 * 60 * 18).toISOString(),
+    idempiereSync: {
+      synced: true,
+      docNo: 'CO-100412',
+      syncDate: new Date(Date.now() - 1000 * 60 * 16).toISOString()
+    }
+  },
+  {
+    id: 'ORD-9043',
+    customerName: 'Cafetería & Bistro Plaza',
+    channel: 'PWA Preventa',
+    origin: 'PWA Preventa',
+    seller: 'Lucía Navarro (Preventista #02)',
+    items: [
+      { name: 'Burger Doble Especial', qty: 5, price: 15.50 },
+      { name: 'Clásica Bacon & Cheddar', qty: 5, price: 10.50 }
+    ],
+    total: 130.00,
+    status: 'Aprobado',
+    createdAt: new Date(Date.now() - 1000 * 60 * 35).toISOString(),
+    idempiereSync: {
+      synced: true,
+      docNo: 'CO-100411',
+      syncDate: new Date(Date.now() - 1000 * 60 * 30).toISOString()
+    }
+  },
+  {
+    id: 'ORD-9042',
+    customerName: 'Mateo Fernández',
+    channel: 'E-commerce',
+    origin: 'E-commerce',
+    seller: 'Portal Web Directo',
+    items: [
+      { name: 'Burger Doble Especial', qty: 1, price: 15.50 },
+      { name: 'Burger Real Doble', qty: 1, price: 12.90 }
+    ],
+    total: 28.40,
+    status: 'Entregado',
+    createdAt: new Date(Date.now() - 1000 * 60 * 52).toISOString(),
+    idempiereSync: {
+      synced: true,
+      docNo: 'CO-100408',
+      syncDate: new Date(Date.now() - 1000 * 60 * 50).toISOString()
+    }
   },
   {
     id: 'ORD-9041',
-    customerName: 'Mateo Fernández',
-    items: [{ name: 'Burger Doble Especial', qty: 1, price: 15.50 }, { name: 'Burger Real Doble', qty: 1, price: 12.90 }],
-    total: 28.40,
+    customerName: 'Hotel Boutique Las Terrazas',
+    channel: 'PWA Preventa',
+    origin: 'PWA Preventa',
+    seller: 'Carlos Mendoza (Preventista #04)',
+    items: [
+      { name: 'Burger Trufa & Brie Imperial', qty: 8, price: 15.90 },
+      { name: 'Burger Crispy Golden Royal', qty: 4, price: 11.50 }
+    ],
+    total: 173.20,
+    status: 'Facturado ERP',
+    createdAt: new Date(Date.now() - 1000 * 60 * 95).toISOString(),
+    idempiereSync: {
+      synced: true,
+      docNo: 'CO-100405',
+      syncDate: new Date(Date.now() - 1000 * 60 * 90).toISOString()
+    }
+  },
+  {
+    id: 'ORD-9040',
+    customerName: 'Andrés Villalobos',
+    channel: 'E-commerce',
+    origin: 'E-commerce',
+    seller: 'Portal Web Directo',
+    items: [
+      { name: 'Burger Crispy Golden Royal', qty: 2, price: 11.50 }
+    ],
+    total: 23.00,
     status: 'Entregado',
-    createdAt: new Date(Date.now() - 1000 * 60 * 48).toISOString()
+    createdAt: new Date(Date.now() - 1000 * 60 * 140).toISOString(),
+    idempiereSync: {
+      synced: true,
+      docNo: 'CO-100401',
+      syncDate: new Date(Date.now() - 1000 * 60 * 138).toISOString()
+    }
   }
 ];
 
@@ -483,6 +580,19 @@ function getDbStatus() {
   };
 }
 
+function syncOrderToIdempiere(orderId, docNo) {
+  const order = inMemoryOrders.find(o => o.id === orderId);
+  if (!order) return null;
+  const generatedDocNo = docNo || `CO-${Math.floor(100400 + Math.random() * 500)}`;
+  order.idempiereSync = {
+    synced: true,
+    docNo: generatedDocNo,
+    syncDate: new Date().toISOString()
+  };
+  order.status = 'Sincronizado iDempiere';
+  return order;
+}
+
 module.exports = {
   initDB,
   getProducts,
@@ -492,5 +602,6 @@ module.exports = {
   getCustomers,
   getOrders,
   createOrder,
+  syncOrderToIdempiere,
   getDbStatus
 };
